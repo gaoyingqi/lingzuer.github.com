@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  <title>github</title>
+	  <style>
+	  	/*pic center*/
+		.wikiPic {margin:0 auto;width:120px; height:120px; *font-size:120px; overflow:hidden; table-layout: fixed; display:table; border:1px solid #e6e6e6}
+		.picRind {display:table-cell; vertical-align:middle; text-align:center; /* IE Hack */ *display: block; *font-size: 87.3%;/* height * 0.873*/ *line-height:100%; *font-family:Arial;/* utf-8 hack */ *width:100%; *height:100%;}
+		.picCore {vertical-align:middle;border:0}
+		.wikiPicTitle {display:block;padding:0 10px;height:20px;overflow:hidden}
+		
+	  	img {
+			-webkit-transform: scale(1);
+			-webkit-transition-timing-function: ease-out;
+			-webkit-transition-duration: 500ms;
+		}
+		img:hover{
+			-webkit-transform: scale(1.05);
+			-webkit-transition-timing-function: ease-out;
+			-webkit-transition-duration: 500ms;
+		}
+	  </style>
+  </head>
+  <body>
+  	<div class="wikiPic">
+		<a href="#" class="picRind"><img class="picCore" alt="sdf" onload="imgFit(this.src, this, 120, 120)" src="http://i03.i.aliimg.com/photo/308483295/Acethydrazide_v0.jpg"></a>
+	</div>
+	<textarea><ul><li>hello</li></ul></textarea>
+	<script>
+        var imgFit = function(theURL, sImage, imgW, imgH){
+            var oImg = new Image();
+            oImg.src = theURL;
+            
+            if (oImg.width > imgW || oImg.height > imgH) {
+                (oImg.width / oImg.height >= imgW / imgH) ? (sImage.width = imgW, sImage.height = oImg.height * imgW / oImg.width) : (sImage.width = oImg.width * imgH / oImg.height, sImage.height = imgH);
+            }
+        }
+    </script>
+  </body>
+</html>
