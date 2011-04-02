@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>分享</title>
+	<link type="text/css" href="main.css" rel="stylesheet">
+</head>
+<body>
+    <div class="presentation">
+	
+	<div class="slide">
+          <section class="center">
+            <span class="html">HTML</span>
+            +
+            <span class="js">JavaScript</span>
+            +
+            <span class="css">CSS</span>			
+          </section>
+        </div>
+	
+      <div class="slides">
+        <div class="slide">
+          <section class="center intro">
+            <hgroup>
+              <h1>
+                <span class="css">CSS</span>
+              </h1>
+            </hgroup>
+          </section>
+        </div>      
+
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Writing CSS</h1></header>
+		  <section>
+			<p>Unlike a programming language such as JavaScript, there isn’t that much to the syntax of CSS and the makeup of CSS rules.</p>
+		    <pre>
+body {
+    background: #fff url(images/space.png) no-repeat 0 0;
+    color: red; /* font color */
+}
+			</pre>
+            <ul class="summary">
+              <li>Case Sensitivity</li>
+			  <li>Comments</li>
+			  <li>Whitespace</li>
+			  <li>Quoting and Escaping Quotes</li>
+			</ul>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Case Sensitivity</h1></header>
+		  <section>
+		  <p>CSS is case insensitive. For example, the color property is equivalent
+to the COLOR property, and a px unit is the same as a PX or Px unit.</p>
+            <pre>
+body {
+    COLOR: #f00;
+    font-size: 12PX;
+}
+body {
+    color: #f00;
+    font-size: 12Px;
+}
+</pre>
+<p>By convention, properties and values are typically written using lowercase characters.</p>
+<pre>
+body {
+    color: #f00;
+    font-size: 12px;
+}
+			</pre>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Comments</h1></header>
+		  <section>
+			<p>There is only one way to write a comment in CSS—beginning with the
+two characters /* and ending with the same two characters reversed, */.
+Any text, code, or whitespace between those two is ignored.</p>
+		    <pre>
+/* aipai index */
+
+.aipai {
+    font-size: 12px;
+}
+			</pre>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Whitespace</h1></header>
+		  <section>
+			<p>In CSS, whitespace—including space characters, tabs, and line breaks—has
+no meaning outside of its use as a descendent selector or as a
+separator for multiple values in a single declaration. Outside of those two
+cases, it is considered optional. It is up to you to use whitespace (or not) to
+format your CSS to help with the organization and readability of your code.</p>
+<pre>
+body{padding:0;margin:0;}
+</pre>
+<pre>
+body {
+    padding: 0;
+    margin: 0;
+}
+</pre>
+<pre>
+/* common css sprites */
+.col-main,
+.col-sub,
+.col-extra {
+    background: url(/images/v1/v1-city.png?v=20110324) no-repeat -9999px -9999px;
+}</pre>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Quoting and Escaping Quotes</h1></header>
+		  <section>
+			<p>The single quote (‘) and double quote (“) can be used interchangeably to
+wrap string values in CSS (though if a string starts with one, it must end
+with the same one).</p>
+<pre>
+.title 
+    font-family: "Microsoft YaHei";
+}
+</pre>
+<p style="margin-top:60px">For some string-like references, such as with a url() reference, it is also
+allowable to leave off the quote marks around a string.</p>
+<pre>
+body {
+    background: url(/images/sprites.png) no-repeat 0 0;
+}
+</pre>
+<p style="margin-top:60px">Keywords, such as color names, are not strings and must not be quoted.</p>
+<pre>
+body { color: red; }
+</pre>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class="css">CSS</span> <h1>CSS Basics</h1></header>
+          <section>
+
+<pre>@-webkit-<b>keyframes</b> <em>pulse</em> {
+ <b>from</b> {
+   opacity: 0.0;
+   font-size: 100%;
+ }
+ <b>to</b> {
+   opacity: 1.0;
+   font-size: 200%;
+ }
+}
+
+div {
+  -webkit-<b>animation-name</b>: <em>pulse</em>;
+  -webkit-<b>animation-duration</b>: 2s;
+  -webkit-<b>animation-iteration-count</b>: infinite;
+  -webkit-<b>animation-timing-function</b>: ease-in-out;
+  -webkit-<b>animation-direction</b>: alternate;
+}
+</pre>
+
+            <style>
+              @-webkit-keyframes pulse {
+               from {
+                 opacity: 0.0;
+                 font-size: 100%;
+               }
+               to {
+                 opacity: 1.0;
+                 font-size: 200%;
+               }
+              }
+
+              #animation-example {
+                -webkit-animation-name: pulse;
+                -webkit-animation-duration: 2s;
+                -webkit-animation-iteration-count: infinite;
+                -webkit-animation-timing-function: ease-in-out;
+                -webkit-animation-direction: alternate;
+              }
+            </style>
+
+            <example id="animation-example" style="font-family: Arial; text-align: center; line-height: 100px">
+              Let's go!
+            </example>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>CSS Basics</h1></header>
+		  <section>
+			<p>HTML provides the content and structure of the web page</p>
+			<p>JavaScript supplies the interaction and document manipulation</p>
+			<p>CSS provides the presentation and flair.</p>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>CSS Basics</h1></header>
+		  <section>
+			<h2>What Is CSS?</h2>
+			<p>CSS, short for Cascading Style Sheets, is a language for describing the
+presentational properties of content elements in structured documents
+such as HTML documents.</p><br />
+
+<h2>What Are Styles Sheets?</h2>
+			<p>Style sheets provide a set of guidelines for styling a structured document
+by defining rules for the appearance of different types of content
+or different contexts that content can be found in.</p>
+<p>As a browser or other user agent loads the HTML content for the document,
+it also loads the style sheet information. From this style sheet
+information, it then builds up the set of presentation rules for each
+individual content item based on its element type, its state, and its location
+in the document. It will ultimately render each element consistently
+based on this accumulated set of rules.</p>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Anatomy of a Statement</h1></header>
+		  <section>
+			<p>CSS-based style sheets consist of a list of statements. There are two types
+of statements: rule sets (referred to as rules) and at-rules.</p>
+<h2>Rule Sets</h2>
+<p>A rule set consists of a selector followed by a declaration block containing
+declarations of style properties and their values, as explained in the
+following list</p>
+<img style="border-radius: 8px;" src="images/css2.png" />
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Rule Sets</h1></header>
+		  <section>
+			<p>1. Rule set: This is the entire definition of a CSS rule, including selector
+and declaration block, containing individual declarations.</p>
+<p>2. Selector: The selector includes everything up to the opening curly
+brace. The selector describes the markup elements to which the
+contents of declaration block apply. Individual selectors may share
+a declaration block, with each selector separated with a comma (,).</p>
+<p>3. Declaration block: The declaration block starts with the left curly brace
+and ends with the right curly brace. Inside the block there are zero or
+more declarations, each separated by a semicolon (;).</p>
+<img style="border-radius: 8px;" src="images/css2.png" />
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Rule Sets</h1></header>
+		  <section>
+<p>4. Declaration: Each declaration is a colon-separated property-value pair.</p>
+<p>5. Property: The property is the CSS property that the declaration is
+targeting.</p>
+<p>6. Value: This is the value that will be applied to the declared property.
+The syntax of the value depends on the property but can be things
+such as keywords, a &lt;length&gt;, a &lt;percentage&gt;, or a mix of multiple,
+space-separated types.</p>
+<img style="border-radius: 8px;" src="images/css2.png" />
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Defining Values for Four-Sided Properties</h1></header>
+		  <section>
+<p>Properties such as margin, padding, and border-width are used to
+define values for all four sides of a block (whereas margin-right
+defines the right margin alone). These properties, and those like
+them, can take from one to four space-separated values that are
+applied to the sides in the following manner:</p>
+<pre>
+.selector1 { margin: 10px; }
+.selector2 { margin: 10px 5%; }
+.selector3 { margin: 10px 5% 20px; }
+.selector4 { margin: 10px 5% 20px auto; }
+</pre>
+<ul class="summary" style="font-size:20px;">
+<li>If one value is listed (for example, 10px), that value is applied to all
+four sides.</li>
+<li>If two values are listed (for example, 10px 5%), the first value is
+applied to the top and bottom, while the second is applied to the
+right and left sides.</li>
+<li>If three values are listed (for example, 10px 5% 20px), the first value
+is applied to the top, the second to both the right and left sides,
+and the last to the bottom.</li>
+<li>If four values are listed (for example, 10px 5% 20px auto), the values
+are applied clockwise starting from the top (top, right, bottom, left).</li>
+</ul>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>At-Rules</h1></header>
+		  <section>
+<p>At-rules are statements that begin with the character for at (@), followed
+by a rule type or identifier, and end with a semicolon. Unlike rule sets,
+at-rules do not contain declarations directly but offer additional context
+or commands for the processing of style sheet information. Here’s an
+example:</p>
+<pre>
+/* include file additional.css */
+@import “additional.css”
+</pre>
+<pre>
+/* target specific media with contained rules */
+@media print {
+    [...]
+}</pre>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Cascading</h1></header>
+		  <section>
+<p>The cascading in CSS is the process that is followed in order to determine
+which declaration for a given property is applied to a given element in
+the document. As you’ll soon learn, properties—color, for instance—can
+be defined and redefined multiple times, so the browser must determine
+which of those definitions to apply. The criteria for sorting through the
+style sheets to determine which property declaration to use is threefold:
+<strong>weight</strong>, <strong>specificity</strong>, and <strong>order of appearance</strong>.</p>
+<pre>
+#container {
+    color: #333;
+    margin: 10px auto;
+}
+</pre><pre>
+#container {
+    color: #999;
+}
+</pre>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Cascading</h1></header>
+		  <section>
+<p>The weight of the declaration is determined by the origin of the style
+rule. Style rules can be found in one of three sources in descending order
+of weight:</p>
+<ul class="summary" style="font-size:20px;">
+<li>Author style sheets: These are the style sheets defined along with the
+source HTML document by the author of the page visited.</li>
+<li>User style sheets: User style sheets are CSS documents or other styling
+preferences selected by the user of the browser.</li>
+<li>User agent style sheets: Each user agent applies a default set of presentation
+rules representing common behaviors for each HTML element
+(links are highlighted, headings are larger, and so on).</li>
+</ul>
+<img style="border-radius: 8px;" src="images/cascading.png" />
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Inheritance</h1></header>
+		  <section>
+<p>The values for some properties, such as color and font-family, are
+inherited by child elements of the element where the property was set. If
+that property was not explicitly declared for the child element, it will use
+the inherited value for display.</p>
+<pre>
+&lt;p style="font-size: 12px"&gt;
+    &lt;strong style="font-size: 2em"&gt;
+        &lt;span&gt;Text&lt;/span&gt;
+    &lt;/strong&gt;
+&lt;/p&gt;
+</pre>
+<p style="font-size: 12px">
+<strong style="font-size: 2em">
+<span>Text</span>
+</strong>
+</p>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Inheritance</h1></header>
+		  <section>
+<p>Other properties, such as width, height, and margin, are not inherited
+and cannot be inherited. This means that although you may place a
+height value on a &lt;div&gt; or &lt;article&gt; element of 400px, all of that &lt;div&gt;
+or &lt;article&gt;’s children will continue to use the default value of height
+(auto) unless their height is explicitly set.</p>
+<pre>
+&lt;div style="width: 400px; border: 1px solid green;"&gt;
+    &lt;div style="border: 1px solid red"&gt;
+        &lt;span&gt;Text&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<div style="width: 400px; border: 1px solid green;">
+	<div style="border: 1px solid red">
+		<span>Text</span>
+	</div>
+</div>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Specified, Computed, Used, and Actual Values</h1></header>
+		  <section>
+<p>Values come in four flavors depending on where and how they are being
+referenced. You’ve already encountered computed values and specified
+values: the third is the actual value.</p>
+<ul class="summary" style="font-size:20px;">
+<li>Specified values: These are the values as they were coded in the
+CSS rules.</li>
+<li>Computed values: These are the values for a property as they are
+calculated after applying the cascade and inheritance but before the
+document is processed or rendered. Units like ems are calculated and
+turned into fixed values (pixels for most devices), paths to files are
+made absolute, and inherited values are inherited.</li>
+<li>Used values: After all the values are calculated and the document is
+processed, the value of some other properties such as percentage or
+auto-based widths that rely on the dimensions of a parent element to be known are calculated into their fixed-width equivalents.</li>
+<li>Actual values: After all the calculations are done and a browser has
+processed the document, there are some occasions where the used
+value cannot be rendered, so the browser must approximate the
+used value, creating the actual value.</li>
+</ul>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>Others</h1></header>
+		  <section>
+		  <ul class="summary" style="font-size:20px;">
+			<li>Block, Inline, and Replaced Elements</li>
+			<li>Web Standards and Specifications</li>
+			<li>CSS2, CSS2.1, CSS3</li>
+			<li>HTML 4, XHTML, and HTML5</li>
+			<li>User Agents, Browsers, and Devices</li>
+		  </ul>
+		  <img style="border-radius: 8px;float:right" src="images/kuang.png" />
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class="css">CSS</span> <h1>Working with CSS</h1></header>
+
+          <section>
+            <info>
+              A U ready?
+            </info>
+            <style>
+              #threed-example {
+                margin: 50px 20px; 
+                -webkit-transform: rotateZ(5deg);
+                -webkit-transition: -webkit-transform 2s ease-in-out;
+              }
+              #threed-example:hover {
+                -webkit-transform: rotateZ(-5deg);
+              }
+            </style>
+            <pre id="threed-example">-webkit-<b>transform</b>: <b>rotateY</b>(45deg);            
+-webkit-transform: <b>scaleX</b>(25deg);            
+-webkit-transform: <b>translate3d</b>(0, 0, 90deg);            
+-webkit-transform: <b>perspective</b>(500px) 
+</pre>
+<img style="border-radius: 8px;" src="images/begin.jpg" />
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class="css">CSS</span> <h1>Attaching Styles to HTML</h1></header>
+
+          <section>
+		  <p>Before you start writing CSS, you have to know where to put the code.
+There are a few ways to define rules for your content, some based on
+external files that can be shared between multiple HTML documents
+on a site and some that are more specific to a page or even individual
+elements.</p>
+            <img style="border-radius: 8px;" src="images/where.jpg" />
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class="css">CSS</span> <h1>Attaching Styles to HTML</h1></header>
+
+          <section>
+		  <h2>HTML &lt;link&gt; element</h2>
+		  <p>You can use the HTML &lt;link&gt; element in the &lt;head&gt; of a document
+to specify an external CSS document. This document does not contain
+markup or script elements, only CSS code (rules and comments).</p>
+           <pre>
+&lt;head&gt;
+    &lt;link rel=”stylesheet” type=”text/css” src=”global.css”&gt;
+&lt;/head&gt;
+		   </pre>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class="css">CSS</span> <h1>Attaching Styles to HTML</h1></header>
+
+          <section>
+		  <h2>HTML &lt;style&gt; element</h2>
+		  <p>You can use the HTML &lt;style&gt; element in the &lt;head&gt; of a document to
+wrap CSS code to be applied to the document.</p>
+           <pre>
+&lt;head&gt;
+&lt;style type=”text/css”&gt;
+[...]
+&lt;/style&gt;
+&lt;/head&gt;
+		   </pre>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class="css">CSS</span> <h1>Attaching Styles to HTML</h1></header>
+
+          <section>
+		  <h2>@import Rule</h2>
+		  <p>You can use the @import rule at the top of any block of CSS code or CSS
+document to define another CSS document to be included into the
+current document or code block. The @import rule must precede all other
+rules in the document (with the exception of the proposed @charset rule
+from CSS3).</p>
+           <pre>
+@import “imported.css”
+		   </pre>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class="css">CSS</span> <h1>Attaching Styles to HTML</h1></header>
+
+          <section>
+		  <h2>HTML style Attribute</h2>
+		  <p>HTML content elements (those not associated with the document
+<head>) have a style attribute that can be used to assign a semicolonseparated
+list of CSS declarations to that specific element.</p>
+           <pre>
+&lt;p style=”color: pink”&gt;A Pink Paragraph&lt;/p&gt;
+		   </pre>
+		   <p>This attribute is an unwieldy method of styling an entire document but
+can occasionally be useful on a project where it is important for style
+information to be matched with the HTML content such as when sharing
+HTML content across sites or defining one-off special cases for styling an
+element.</p>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class="css">CSS</span> <h1>Attaching Styles to HTML</h1></header>
+
+          <section>
+		  <h2>JavaScript and the DOM</h2>
+		  <p>JavaScript can access style sheets and style properties via the Document
+Object Model (DOM). JavaScript can be used to set styles via the style
+object on an element or to read current styling information (used values)
+via the getComputedStyle method.</p>
+
+		   <p>You can also use JavaScript to read the contents of style sheets via the
+document.styleSheets object, which is a useful technique for creating
+bridge libraries to bring support for unsupported CSS properties or selectors
+to older browsers.</p>
+<pre>
+var container = get('div#container');
+container.style.color = '#f00';
+</pre>
+          </section>
+        </div>
+		
+		
+		
+		
+		
+		
+		<div class="slide">
+            <section class="center intro">
+            <hgroup>
+              <h1>
+               Thanks!
+              </h1>
+            </hgroup>
+			<img style="border-radius: 8px;" src="images/byby.jpg" />
+          </section>
+        </div> 
+
+<!-- slides -->
+       
+    </div>
+    <script src="js/slider.js"></script>
+</body>
+</html>
