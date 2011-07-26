@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>分享</title>
 	<link type="text/css" href="main.css" rel="stylesheet">
@@ -144,7 +144,7 @@
 		  <section>
 		  <p>模块应在保证数量尽可能少的原则下，做到尽可能简单，以提高重用性</p>
 		  <p>多用组合，少用继承</p>
-		  <p>http://oocss.org/</p>
+		  <p><a href="http://oocss.org/">http://oocss.org/</a></p>
 		  
 	</section>
         </div>
@@ -153,20 +153,14 @@
           <header><span class='css'>CSS</span> <h1>其他</h1></header>
 		  <section>
 		  <p>我自己关于对.left{};.right{};.item{};的一些写法</p>
-		  <pre>.col-main {<br/>&nbsp;&nbsp;&nbsp;&nbsp;float: left;<br/>&nbsp;&nbsp;&nbsp;&nbsp;width: 738px;  /* 738 + 20 + 202 = 960px */<br/>}<br/>.item {<br/>&nbsp;&nbsp;&nbsp;&nbsp;width: 110px;<br/>&nbsp;&nbsp;&nbsp;&nbsp;_width: 109px; /* ie6 hack */<br/>}</pre>
-		  <p>这也是我喜欢多行式代码风格的原因之一，就是很容易的添加注释。</p>
-	</section>
+		  <p>.left;.right可以写到meta.css里面</p>
+		  <pre>.left { float: left; display: inline; }</pre>
+		  <pre>.right { float: right; display: inline; }</pre>
+		  <p>.item放到page.css里面，不要写到core.css里面</p>
+		  <pre>&lt;ul&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="item"&gt;one&lt;/li&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="item"&gt;one&lt;/li&gt;<br/>&lt;/ul&gt;</pre>
+		</section>
         </div>
         
-        
-        
-		
-		
-		
-		
-		
-		
-		
 		<div class="slide">
             <section class="center intro">
             <hgroup>
