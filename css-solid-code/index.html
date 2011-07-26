@@ -39,11 +39,16 @@
 		  	</p>
             <pre>reset.css + meta.css + common.css + page.css [+ widget.css]
 			</pre>
-			<p>其中：</p>
-			<pre>reset.css + meta.css = base.css;<br/>base.css + common.css = core.css</pre>
+          </section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>base层</h1></header>
+		  <section>
+		  <p>base.css提供reset功能和粒度最小的通用类meta.css---原子类</p>
+            <pre>reset.css + meta.css = base.css;</pre>
+			<p>base层相对比较稳定，基本上不需要维护。</p>
 			<p><a href="reset.css">reset.css</a><br/><a href="meta.css">meta.css</a></p>
-			<p>base.css提供reset功能和粒度最小的通用类meta.css---原子类<br/>
-				base层相对比较稳定，基本上不需要维护。</p>
           </section>
         </div>
         
@@ -137,7 +142,7 @@
         <div class="slide">
           <header><span class='css'>CSS</span> <h1>其他</h1></header>
 		  <section>
-		  <p>我自己关于对.left{};.right{};.item{};</p>
+		  <p>我自己关于对.left{};.right{};.item{};的一些写法</p>
 		  <pre>.col-main {<br/>&nbsp;&nbsp;&nbsp;&nbsp;float: left;<br/>&nbsp;&nbsp;&nbsp;&nbsp;width: 738px;  /* 738 + 20 + 202 = 960px */<br/>}<br/>.item {<br/>&nbsp;&nbsp;&nbsp;&nbsp;width: 110px;<br/>&nbsp;&nbsp;&nbsp;&nbsp;_width: 109px; /* ie6 hack */<br/>}</pre>
 		  <p>这也是我喜欢多行式代码风格的原因之一，就是很容易的添加注释。</p>
 	</section>
