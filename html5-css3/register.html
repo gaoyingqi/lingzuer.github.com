@@ -4,50 +4,68 @@
 	<meta charset="utf-8">
 	<title>The HTML5 Form</title>
 	<link rel="stylesheet" href="../reset.css">
+	<style type="text/css">
+		.row-mod { width: 960px; margin: 10px auto 0; }
+		li { margin-top: 15px; }
+	</style>
 </head>
 <body>
-<form id="register" method="post">
-<hgroup>
-<h1>Sign Me Up!</h1>
-<h2>I would like to receive your fine publication.</h2>
-</hgroup>
-<ul>
-<li>
-<label for="register-name">My name is:</label>
-<input type="text" id="register-name" name="name" required aria-required="true">
-</li>
-<li>
-<label for="address">My email address is:</label>
-<input type="text" id="address" name="address">
-</li>
-<li>
-<label for="url">My website is located at:</label>
-<input type="text" id="url" name="url" placeholder="http://example.com>
-</li>
-<li>
-<label for="password">I would like my password to be:</label>
-<p>(at least 6 characters, no spaces)</p>
-<input type="password" id="password" name="password">
-</li>
-<li>
-<label for="rating">On a scale of 1 to 10, my knowledge of HTML5 is:</label>
-<input type="text" name="rating" id=rating">
-</li>
-<li>
-<label for="startdate">Please start my subscription on:</label>
-<input type="text" id="startdate" name="startdate">
-</li>
-<li>
-<label for="quantity">I would like to receive <input type="text" name="quantity" id="quantity"> copies of <cite>The HTML5 Herald</cite>.</label>
-</li>
-<li>
-<label for="upsell">Also sign me up for <cite>The CSS3 Chronicle</cite></label>
-<input type="checkbox" id="upsell" name="upsell">
-</li>
-<li>
-<input type="submit" id="register-submit" value="Send Post Haste">
-</li>
-</ul>
+<form id="register" method="post" class="row-mod">
+	<hgroup>
+		<h1>Sign Me Up!</h1>
+		<h2>I would like to receive your fine publication.</h2>
+	</hgroup>
+	<ul>
+	<li>
+		<label for="register-name">My name is:</label>
+		<input type="text" id="register-name" name="name" required aria-required="true">
+	</li>
+	<li>
+		<label for="address">My email address is:</label>
+		<input type="email" id="address" name="address">
+	</li>
+	<li>
+		<label for="url">My website is located at:</label>
+		<input type="url" id="url" name="url" placeholder="http://example.com">
+	</li>
+	<li>
+		<label for="password">I would like my password to be:</label>
+		<p>(at least 6 characters, no spaces)</p>
+		<input type="password" id="password" name="password" pattern="\S{6,}">
+	</li>
+	<li>
+		<label for="rating">On a scale of 1 to 10, my knowledge of HTML5 is:</label>
+		<input type="range" min="1" max="10" name="rating" id=rating">
+	</li>
+	<li>
+		<label for="clr">Color: </label>
+		<input id="clr" name="clr" type="color" placeholder="#FFFFFF" pattern="#(?:[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})" required>	
+	</li>
+	<li>
+	<label for="startdate">Please start my subscription on:</label>
+		<input type="date" min="1904-03-17" max="1904-05-17" id="startdate" name="startdate" required aria-required="true" placeholder="1911-03-17">
+	</li>
+	<li>
+		<label for="quantity">I would like to receive <input type="number" name="quantity" id="quantity"> copies of <cite>The HTML5 Herald</cite>.</label>
+	</li>
+	<li>
+		<label for="favcolor">Favorite Color</label>
+		<input type="text" list="colors" id="favcolor" name="favcolor">
+		<datalist id="colors">
+			<option value="Blue">
+			<option value="Green">
+			<option value="Pink">
+			<option value="Purple">
+		</datalist>	
+	</li>
+	<li>
+		<label for="upsell">Also sign me up for <cite>The CSS3 Chronicle</cite></label>
+		<input type="checkbox" id="upsell" name="upsell">
+	</li>
+	<li>
+		<input type="submit" id="register-submit" value="Send Post Haste">
+	</li>
+	</ul>
 </form>
 </body>
 </html>
