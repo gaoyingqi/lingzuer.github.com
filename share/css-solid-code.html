@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>分享</title>
+	<link type="text/css" href="main.css" rel="stylesheet">
+</head>
+<body>
+    <div class="presentation">
+      <div class="slides">
+        <div class="slide">
+          <section class="center intro">
+            <hgroup>
+              <h1>
+                <span class="css">关于CSS的一些总结</span>
+              </h1>
+            </hgroup>
+          </section>
+        </div>      
+
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>DOCTYPE</h1></header>
+		  <section>
+		    <pre>&lt;!doctype html&gt;</pre>
+            <ul class="summary">
+              <li>不用再考虑怪异模式</li>
+			  <li>不用再考虑DTD(Document Type Definition)</li>
+			  <li>好记好写且规范</li>
+			</ul>
+          </section>
+        </div>
+		
+		<div class="slide">
+          <header><span class='css'>CSS</span> <h1>如何组织 CSS</h1></header>
+		  <section>
+		  <p>如何组织CSS可以有多种角度，比如：按功能划分，按照区块划分等，不同的组织方法有不同的优缺点。<br />
+		  	我比较喜欢的组织方法：
+		  	</p>
+            <pre>reset.css + meta.css + common.css + page.css [+ widget.css]
+			</pre>
+          </section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>base层</h1></header>
+		  <section>
+		  <p>base.css提供reset功能和粒度最小的通用类meta.css---原子类</p>
+            <pre>reset.css + meta.css = base.css;</pre>
+			<p>base层相对比较稳定，基本上不需要维护。</p>
+			<p><a href="reset.css">reset.css</a><br/><a href="meta.css">meta.css</a></p>
+          </section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>common层</h1></header>
+		  <section>
+		  <p>common层位于中间层，提供组件级和框架级的css类，<br/>我一般喜欢讲代码“模块化”，将常用的模块抽化出来，<br/>这样其他页面可以复用，UI风格也保持一致。
+		  	</p>
+            <pre>.row-mod { margin: 0 auto; width: 960px; }<br/>.col-main { float: left; width: 750px; /* x + 10 + 200 = 960px */ }<br/>.col-sub { float: right; width: 200px; }
+			</pre>
+			<p>合并为core.css</p>
+			<pre>base.css + common.css = core.css</pre>
+			<p>common.css一般指定专人来维护，如有需要变动，通知专人。</p>
+          	<p>例如：爱拍首页拍婚纱、拍写真、妈妈宝宝导航</p>
+          </section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>page层</h1></header>
+		  <section>
+		  <p>页面级别的样式，一般只有本页面使用</p>
+
+<p>可以覆盖common.css里面的样式</p>
+
+<p>如果有些样式全站都要使用，则提取出来放到common.css中，如果有一两个页面也会用到，那么可以提取出来放到一个新的css文件中。</p>
+          </section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>widget</h1></header>
+		  <section>
+		  <p>组件或者模块级别的样式写到这里，一般是和组件的 js 文件一起使用。</p>
+          </section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>在文件中如何引用</h1></header>
+		  <section>
+		  <p>我们有时候会把一些共用的css文件打包到page里面去</p>
+		  <p>或者把page里面的样式打包到core里面去</p>
+		  <p>最好是把把全站级的放到core里面，其他页面利用缓存</p>
+		  <pre>&lt;head&gt;<br/>&lt;title&gt;demo&lt;/title&gt;<br/>&lt;link href="css/core.css" type="text/css"&gt;<br/>&lt;link href="css/page.css type="text/css"&gt;<br/>&lt;link href="css/widget.css type="text/css"&gt;<br/>&lt;/head&gt;</pre>
+          </section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>代码风格</h1></header>
+		  <section>
+		  <p>一般有多行式和单行式</p>
+		  <pre>.row-mod {<br/>&nbsp;&nbsp;&nbsp;&nbsp;margin: 0 auto;<br/>&nbsp;&nbsp;&nbsp;&nbsp;width: 960px;<br/>}</pre>
+		  <pre>.row-mod{margin: 0 auto;width: 960px;}</pre>
+		  <p>我个人比较喜欢多行式，<br/>一个是因为好添加注释，<br/>另一个就是css3时代到来后，要写很多的属性，会很长，<br/>再就是调试的时候总是使用firebug</p>
+		  
+          </section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>注释</h1></header>
+		  <section>
+		  <p>注释我一般分为文件注释、模块注释（大，小）、单行注释</p>
+          </section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>文件注释</h1></header>
+		  <section>
+		  <p>文件注释就是在css文件顶部写清楚改文件样式是用于那一个或那几个页面，作者，版本等，如：</p>
+<pre>/**<br/>&nbsp;* Style for city index.<br/>&nbsp;*<br/>&nbsp;* @author      yaowu.huang@gmail.com<br/>&nbsp;* @version     1.1.0 build 2011-07-25<br/>&nbsp;*/</pre>
+          </section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>模块注释（大，小）</h1></header>
+		  <section>
+		  <p>模块注释（大，小），一般在写样式的时候，都喜欢分模块，这也比较好组织，好管理，更容易维护，如：</p>
+<pre>/*<br/>&nbsp;* category,拍婚纱、拍写真、选商家、搜索页的分类标签<br/>&nbsp;* @todo: 是否从core.css里剥离出去，它属于core吗？<br/>&nbsp;*/<br/>.catgory {}<br/>/* 头部标题 */<br/>.catgory .hd {}<br/>.catgory .hd .title {}<br/>/* 主题内容 */<br/>.catgory .bd {}</pre>
+	<p>大模块注释也叫宇宙大螺旋注释，就是用夸张的注释来将css样式分块，比较好维护，如：</p>
+	<pre>/* ****************************** 拍婚纱 ****************************** */<br/>.wed { }<br/>/* ****************************** 妈妈宝宝 ****************************** */<br/>.child { }</pre>
+	</section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>单行注释</h1></header>
+		  <section>
+		  <p>单行注释，一般用来注释说明hack，或者某个数值是怎么计算得来的，如：</p>
+		  <pre>.col-main {<br/>&nbsp;&nbsp;&nbsp;&nbsp;float: left;<br/>&nbsp;&nbsp;&nbsp;&nbsp;width: 738px;  /* 738 + 20 + 202 = 960px */<br/>}<br/>.item {<br/>&nbsp;&nbsp;&nbsp;&nbsp;width: 110px;<br/>&nbsp;&nbsp;&nbsp;&nbsp;_width: 109px; /* ie6 hack */<br/>}</pre>
+		  <p>这也是我喜欢多行式代码风格的原因之一，就是很容易的添加注释。</p>
+	</section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>模块化CSS---OOCSS</h1></header>
+		  <section>
+		  <p>模块应在保证数量尽可能少的原则下，做到尽可能简单，以提高重用性</p>
+		  <p>多用组合，少用继承</p>
+		  <p><a href="http://oocss.org/">http://oocss.org/</a></p>
+		  
+	</section>
+        </div>
+        
+        <div class="slide">
+          <header><span class='css'>CSS</span> <h1>其他</h1></header>
+		  <section>
+		  <p>我自己关于对.left{};.right{};.item{};的一些写法</p>
+		  <p>.left;.right可以写到meta.css里面</p>
+		  <pre>.left { float: left; display: inline; }</pre>
+		  <pre>.right { float: right; display: inline; }</pre>
+		  <p>.item放到page.css里面，不要写到core.css里面</p>
+		  <pre>&lt;ul&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="item"&gt;one&lt;/li&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="item"&gt;one&lt;/li&gt;<br/>&lt;/ul&gt;</pre>
+		</section>
+        </div>
+        
+		<div class="slide">
+            <section class="center intro">
+            <hgroup>
+              <h1>
+               Thanks!
+              </h1>
+            </hgroup>
+			<img style="border-radius: 8px;" src="images/byby.jpg" />
+          </section>
+        </div> 
+
+<!-- slides -->
+       
+    </div>
+    <script src="js/slider.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<title>inheritance</title>
+</head>
+<body>
+<p style="font-size: 10px;">
+	<strong style="font-size: 2em;">
+		<span>Text</span>
+	</strong>
+</p>
+<div id="d1" style="width: 400px; border: 1px solid green;">
+	<div id="d2" style="border: 1px solid red">
+		<span>Text</span>
+	</div>
+</div>
+<script>
+var get = function(id) {
+	return document.getElementById(id);
+}
+var d1 = get('d1');
+var d2 = get('d2');
+//alert(d2.style.width);
+</script>
+</body>
+
+</html>
