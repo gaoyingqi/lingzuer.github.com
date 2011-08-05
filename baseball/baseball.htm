@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
+<script> 
+    $(function(){
+
+        setInterval(function(){$('#a :last-child').fadeToggle()}, 2000);
+});
+</script> 
+<style>
+    #a img { position:absolute; left:0; top:0; }
+</style>
+    
+</head>
+<body>
+	<div id="a">
+        <img src="01.jpg">
+        <img src="02.jpg">
+    </div>
+</body>
+</html>
