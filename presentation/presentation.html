@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html class="preso"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+  <meta charset="utf-8">
+  <title>jQuery Spaghetti, version sans gras</title>
+  <link type="text/css" rel="stylesheet" href="files/shCoreDefault.css">
+  <link type="text/css" rel="stylesheet" href="files/dzslides.css">
+  <link type="text/css" rel="stylesheet" href="files/custom.css">
+  
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script type="text/javascript" src="files/dzslides.js"></script>
+
+</head><body>
+<section>
+		<h1>jQuery Spaghetti</h1>
+
+		<h2>Version sans gras</h2>
+	</section>
+	<section>
+	  <h2>Le plus gros problème avec jQuery</h2>
+		<p class="subhead">Aucune organisation de code n'est proposée</p>
+		<p>Comment est-on introduit a jQuery?</p>
+	</section>
+	<section>
+	 	<img src="images/1.jpg">
+	</section>
+	<section>
+	  <h2>Acceptable pour des petits sites web</h2>
+		<script src="https://gist.github.com/1118442.js?file=smalljquery"></script>
+	</section>
+	<section>
+	  <h2>Plus le temps avance..</h2>
+	  <p>Plus cette façon de travailler devient difficile</p>
+	</section>
+	<section>
+	  <h2>Quand Backbone, javascriptMVC, etc ne sont pas nécessaires?</h2>
+		<p><em>En gros, quand votre framework back-end fait tout le "heavy lifting"</em></p>
+		<ul>
+	  	<li>Vos routes(url) ne sont pas gérées sur le front-end?</li>
+		<li>Pas besoin de modèles sur le front-end?</li>
+		<li>Vos views sont gérées back-end?</li>
+	  </ul>
+	</section>	
+	<section>
+		<h2>Ce qu'il reste, c'est la gestion d'événements, pourquoi se compliquer la vie?</h2>
+	</section>
+	<section>
+		<h2>Prenons un exemple</h2>
+	  <script src="https://gist.github.com/1118535.js?file=badcode"></script>
+	</section>
+	<section>	
+	  <h2>Events</h2>
+	  <p>Delegate / Custom events</p>
+	</section>
+	<section>
+	  <h2>3 types d'event handler</h2>
+	  <ul class="smaller">
+	  		<li>$().bind("click", fn)<br /> <em>Bindé directement sur l'object dans le DOM</em></li>
+	  		<li>$().live("click", fn)<br /><em> Bindé sur le document et utilise le bubbling</em></li>
+			<li>$("table").delegate("td", "click", fn)<br /> <em>Bindé sur la table et utilise le bubbling pour accéder au td</em></li>
+			<li><em>$().click(fn)<br /> Shorhand de bind</em></li>
+	  	</ul>
+	</section>	
+	<section>
+	  <h2>Le bubbling (Event delegation), version courte</h2>
+			<p>Quand un événement se produit, une réaction en chaine se produit dans le DOM 
+				et il est possible de "catcher" l'événement sur tous les parents du node.</p>
+				
+				<p><img src="images/event-delegation-2.png"></p>
+	</section>
+	<section>
+	  <h2>Pourquoi utiliser delegate()?</h2>
+			<ul>
+				<li>Bind est lent à l'initialisation sur plusieurs node avec le même sélecteur</li>
+				<li>Live n'offre aucun contexte</li>
+				<li>Delegate offre un contexte et peut être très rapide</li>
+				<li>Si on delete le node ou l'événement est bindé, le ménage est fait automatiquement pour nos events</li>
+			</ul>
+
+	</section>
+	<section>
+	  <h2>Avoir un contexte c'est important</h2>
+	  <p>Delegate est très utile lorsqu'on l'utilise associé à un module ou une division de script</p>
+	   
+	</section>
+	<section><h2>Custom Events, c'est quoi? ça sert à quoi?</h2></section>
+	<section>
+
+	  <p>
+		<script src="https://gist.github.com/1125038.js?file=customevent"></script>
+		</p>
+	<ul>
+		<li>Découpler vos modules</li>
+		<li>Moins de dépendance aux plugins</li>
+	</ul>	
+	   
+	</section>
+
+	<section>
+	  <h2>$(document).........</h2>
+	  <p>
+	  	Les custom events de jQuery sont malheureusement associés au DOM, la plupart du temps ça ne sert absolument à rien. 
+	    Heureusement d'autres solutions existent..
+	  </p>
+	</section>
+	<section>
+	  <h2>Dites bonjour à PUB/SUB</h2>
+	<p>	<script src="https://gist.github.com/1125041.js?file=pubsub"></script></p>
+	<ul>
+		<li>Sauvegarder dans un object</li>
+		<li>N'est pas lié au DOM</li>
+		<li>Beaucoup plus rapide</li>
+	</ul>
+	</section>
+	<section>
+		<h2>Petite note sur les collections jQuery..</h2>
+		<p>Chaque fois que vous utiliser $() une nouvelle collection jQuery est créé, ce pourquoi il est préférable de la sauvegarder quand il y a plusieurs utilisations</p>
+		<script src="https://gist.github.com/1125047.js?file=collection"></script>
+	</section>
+
+	<section>
+		<h2>Selector Traversing</h2>
+		<p>.parent().parent().parent()</p>
+	</section>
+
+	<section>
+		<h2>Direction l'enfer</h2>
+		<p><script src="https://gist.github.com/1118535.js?file=badcode"></script></p>
+	</section>
+	<section>
+		<h2>Bonjour closest("#myParentID")</h2>
+			
+		<p>closest vous permet de traverser les sélecteurs en toute securité.</p>		
+	</section>
+	<section><script src="https://gist.github.com/1126741.js?file=betterTraversing"></script></section>
+	<section>
+		<h2>Request Ajax</h2>		
+		<p>Un petit nouveau depuis 1.5, deferred</p>		
+	</section>	
+	<section>
+		<h2>Tellement 2007...</h2>	
+		<script src="https://gist.github.com/1126761.js?file=ajax"></script>		
+	</section>	
+	<section>
+		<h2>Soyez hipster</h2>	
+		<script src="https://gist.github.com/1126774.js?file=deferred"></script>
+	</section>
+	<section>
+		<h2>Deferred ajoute beaucoup de fonctionnalités aussi</h2>	
+		<ul class="method-list" id="method-list">      
+
+
+		              			<li class="keynav hentry p1 post publish category-deferred-object category-1.6 untagged y2011 m04 d29 h08 withoutfocus" id="post-4174">
+		  			
+		            <a rel="bookmark" title="Permalink to deferred.always()" href="http://api.jquery.com/deferred.always/" class="title-link">deferred.always()</a>
+		    <br /> Add handlers to be called when the Deferred object is either resolved or rejected. 			</li><!-- .post -->
+
+		              			<li class="keynav hentry p2 post publish category-deferred-object category-1.5 untagged y2011 m01 d31 h06 alt withoutfocus" id="post-3652">
+		            <a rel="bookmark" title="Permalink to deferred.done()" href="http://api.jquery.com/deferred.done/" class="title-link">deferred.done()</a>
+		    <br /> Add handlers to be called when the Deferred object is resolved. 		</li><!-- .post -->
+
+		              			<li class="keynav hentry p3 post publish category-deferred-object category-1.5 untagged y2011 m01 d31 h06 withoutfocus" id="post-3656">
+		            <a rel="bookmark" title="Permalink to deferred.fail()" href="http://api.jquery.com/deferred.fail/" class="title-link">deferred.fail()</a>
+		    <br /> Add handlers to be called when the Deferred object is rejected.  			</li><!-- .post -->
+
+		              			<li class="keynav hentry p4 post publish category-deferred-object category-1.5 untagged y2011 m01 d31 h06 alt withoutfocus" id="post-3677">
+		  			
+		            <a rel="bookmark" title="Permalink to deferred.isRejected()" href="http://api.jquery.com/deferred.isRejected/" class="title-link">deferred.isRejected()</a>
+		    <br /> Determine whether a Deferred object has been rejected.  			</li><!-- .post -->
+
+		              			<li class="keynav hentry p5 post publish category-deferred-object category-1.5 untagged y2011 m01 d31 h06 withoutfocus" id="post-3673">
+		  			
+		            <a rel="bookmark" title="Permalink to deferred.isResolved()" href="http://api.jquery.com/deferred.isResolved/" class="title-link">deferred.isResolved()</a>
+		    <br /> Determine whether a Deferred object has been resolved. 			</li><!-- .post -->
+
+		              			<li class="keynav hentry p6 post publish category-deferred-object category-1.6 untagged y2011 m05 d02 h01 alt withoutfocus" id="post-4180">
+		  			
+		            <a rel="bookmark" title="Permalink to deferred.pipe()" href="http://api.jquery.com/deferred.pipe/" class="title-link">deferred.pipe()</a>
+		    <br /> Utility method to filter and/or chain Deferreds.  			</li><!-- .post -->
+
+		              			<li class="keynav hentry p7 post publish category-deferred-object category-1.5 untagged y2011 m02 d11 h01 withoutfocus" id="post-3906">
+		  			
+		            <a rel="bookmark" title="Permalink to deferred.promise()" href="http://api.jquery.com/deferred.promise/" class="title-link">deferred.promise()</a>
+		   <br /> Return a Deferred's Promise object.			</li><!-- .post -->
+
+		              			<li class="keynav hentry p8 post publish category-deferred-object category-1.5 untagged y2011 m01 d31 h06 alt withoutfocus" id="post-3669">
+		  			
+		            <a rel="bookmark" title="Permalink to deferred.reject()" href="http://api.jquery.com/deferred.reject/" class="title-link">deferred.reject()</a>
+		    <br /> Reject a Deferred object and call any failCallbacks with the given <code>args</code>. 			</li><!-- .post -->
+
+		              			<li class="keynav hentry p9 post publish category-deferred-object category-1.5 untagged y2011 m01 d31 h06 withoutfocus" id="post-3697">
+		  			
+		            <a rel="bookmark" title="Permalink to deferred.rejectWith()" href="http://api.jquery.com/deferred.rejectWith/" class="title-link">deferred.rejectWith()</a>
+		    <br /> Reject a Deferred object and call any failCallbacks with the given <code>context</code> and <code>args</code>. 		</li><!-- .post -->
+
+		              			<li class="keynav hentry p10 post publish category-deferred-object category-1.5 untagged y2011 m01 d31 h06 alt withoutfocus" id="post-3660">
+		  			
+		            <a rel="bookmark" title="Permalink to deferred.resolve()" href="http://api.jquery.com/deferred.resolve/" class="title-link">deferred.resolve()</a>
+		    <br /> Resolve a Deferred object and call any doneCallbacks with the given <code>args</code>. 		</li><!-- .post -->
+
+		              			<li class="keynav hentry p11 post publish category-deferred-object category-1.5 untagged y2011 m01 d31 h06 withoutfocus" id="post-3699">
+		  	
+		            <a rel="bookmark" title="Permalink to deferred.resolveWith()" href="http://api.jquery.com/deferred.resolveWith/" class="title-link">deferred.resolveWith()</a>
+		    <br /> Resolve a Deferred object and call any doneCallbacks with the given <code>context</code> and <code>args</code>. 			</li><!-- .post -->
+
+		              			<li class="keynav hentry p12 post publish category-deferred-object category-1.5 untagged y2011 m01 d31 h06 alt withoutfocus" id="post-3644">
+		  			
+		            <a rel="bookmark" title="Permalink to deferred.then()" href="http://api.jquery.com/deferred.then/" class="title-link">deferred.then()</a>
+		    <br /> Add handlers to be called when the Deferred object is resolved or rejected.   			</li><!-- .post -->
+
+		              			<li class="keynav hentry p13 post publish category-deferred-object category-1.6 untagged y2011 m04 d29 h08 withoutfocus" id="post-4188">
+		  			
+		            <a rel="bookmark" title="Permalink to .promise()" href="http://api.jquery.com/promise/" class="title-link">.promise()</a>
+		    <br /> Return a Promise object to observe when all actions of a certain type bound to the collection, queued or not, have finished.  			</li><!-- .post -->
+
+		            </ul>
+	</section>	
+	<section>
+		<h2>$.when</h2>
+		<script src="https://gist.github.com/1131624.js?file=when"></script>
+	</section>
+	<section>
+		<h2>Questions?</h2>	
+	</section>
+</body></html>
