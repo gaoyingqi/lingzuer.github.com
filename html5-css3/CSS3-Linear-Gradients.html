@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="gbk"/>
+	<title>CSS3 Linear Gradients</title>
+	<style>
+		html, body, p { margin: 0; padding: 0; }
+		body { font: 12px/1.5 arial; color: #333; }
+		a { text-decoration: none; }
+		a:hover { text-decoration: underline; }
+		html, img { border: 0; }
+		.clearfix:after { clear: both; content: '.'; display: block; height: 0; visibility: hidden; }
+		.clearfix{ zoom: 1; }
+		
+		.row-mod {
+			margin: 50px auto;
+			font-size: 14px;
+		}
+		.mod {
+			width: 40%;
+			height: 100px;
+			
+		}
+		.m1 {
+			background-image: -webkit-linear-gradient(top, #eff6fb, #d3e4f3 68%);
+		}
+		.m2 {
+			background-image: -webkit-linear-gradient( left, #FF0000, #FFA500 13.0%,#FFFF00 26.0%,#0000FF 39.0%,#008000 52.0%,#4B0082 65.0%,#EE82EE 78.0%)
+		}
+		.m3 {
+			background-image: -webkit-linear-gradient(top, #FFFFFF, #000000); /* top, bottom, left, right */
+		}
+		.m4 {
+			background-image: -webkit-linear-gradient(top left, #FFFFFF, #000000); /* top left, bottom left, top right, bottom right */
+		}
+		.m5 {
+			background-image: -webkit-linear-gradient(126deg, #FF0000, #FFA500 13.0%,#FFFF00 26.0%,#0000FF 39.0%,#008000 52.0%,#4B0082 65.0%,#EE82EE 78.0%);
+		}
+		.m6 {
+			background-image: -webkit-linear-gradient(0deg, #FF0000, #FFA500 50%);
+		}
+		.m7 {
+			background-image: -webkit-repeating-linear-gradient(0deg, #FF0000, #FFA500 50%);
+		}
+	</style>
+</head>
+<body>
+	<div class="row-mod">
+		<ul>
+			<li>
+				<h2>1</h2>
+				<div>background-image: -webkit-linear-gradient(top, #eff6fb, #d3e4f3 68%);</div>
+				<div class="mod m1"></div>
+			</li>
+			<li>
+				<h2>2</h2>
+				<div>background-image: linear-gradient( left, #FF0000, #FFA500 13.0%,#FFFF00 26.0%,#0000FF 39.0%,#008000 52.0%,#4B0082 65.0%,#EE82EE 78.0%)</div>
+				<div class="mod m2"></div>
+			</li>
+			<li>
+				<h2>3</h2>
+				<div>background-image: linear-gradient(top, #FFFFFF, #000000)</div>
+				<div class="mod m3"></div>
+			</li>
+			<li>
+				<h2>4</h2>
+				<div>We can also combine keywords — to create diagonal gradients from the top left, bottom left, top right and bottom right:</div>
+				<div>background-image: linear-gradient(top left, #FFFFFF, #000000)</div>
+				<div class="mod m4"></div>
+			</li>
+			<li>
+				<h2>5</h2>
+				<div>background-image: linear-gradient(126deg, #FF0000, #FFA500 13.0%,#FFFF00 26.0%,#0000FF 39.0%,#008000 52.0%,#4B0082 65.0%,#EE82EE 78.0%)</div>
+				<div class="mod m5"></div>
+			</li>
+			<li>
+				<h2>6</h2>
+				<div>background-image: linear-gradient(0deg, #FF0000, #FFA500 50%)</div>
+				<div class="mod m6"></div>
+			</li>
+			<li>
+				<h2>7</h2>
+				<div>background-image: repeating-linear-gradient(0deg, #FF0000, #FFA500 50%)</div>
+				<div class="mod m7"></div>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
