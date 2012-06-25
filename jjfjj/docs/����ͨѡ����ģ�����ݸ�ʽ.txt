@@ -1,0 +1,133 @@
+（这个在确认是否需要attributeId）
+1、添加宝贝属性tag：
+$.ajax({
+    url: '/addProductAttributeTag/',
+    type: "post",
+    data: {
+        productId: 123,
+        attributeId: 1234,
+        tagName: '新添加标签'
+    },
+    success: function (res) {
+		if (res.success) {
+			//todo
+		}
+    }
+});
+ajax回调返回数据格式：
+{success:true,tag:{
+    productId: 123,
+    attributeId: 1234,
+    tagId: 1234,
+    tagName: '新添加标签'
+}}
+
+
+2、删除宝贝属性tag：
+$.ajax({
+    url: '/delProductAttributeTag/',
+    type: "post",
+    data: {
+        productId: 123,
+        attributeId: 1234,
+        tagId: 1234
+    },
+    success: function (res) {
+		if (res.success) {
+			//todo
+		}
+    }
+});
+ajax回调返回数据格式：
+{success:true}
+
+
+
+3、获取“更新常用促销词”列表
+$.ajax({
+    url: '/getProductPromotionTag/',
+    type: "post",
+    data: {
+        productId: 123
+    },
+    success: function (res) {
+		if (res.success) {
+			//todo
+		}
+    }
+});
+ajax回调返回数据格式：
+[{
+    productId: 123,
+    ptagID: 123,
+    pname: '促销词',
+    checked: true //是否已选
+},{
+    productId: 123,
+    ptagID: 123,
+    pname: '促销词',
+    checked: true //是否已选
+}]
+
+
+4 、更新常用促销词
+$.ajax({
+    url: '/updateProductPromotionTag/',
+    type: "post",
+    data: {
+        productId: 123,
+        ptagID: 123,
+        ops: 'add' //add,del
+    },
+    success: function (res) {
+		if (res.success) {
+			//todo
+		}
+    }
+});
+ajax回调返回数据格式：
+{success:true}
+
+
+“竞争对手”这里需要确定
+5、添加“竞争对手”
+$.ajax({
+    url: '/addCompetitors/',
+    type: "post",
+    data: {
+    	productId: 12123,
+        name: '淘宝'
+    },
+    success: function (res) {
+		if (res.success) {
+			//todo
+		}
+    }
+});
+ajax回调返回数据格式：
+{success:true,data: {
+	cId: 1233, //竞争对手id
+    name: '淘宝'
+}}
+
+6、删除“竞争对手”
+$.ajax({
+    url: '/delCompetitors/',
+    type: "post",
+    data: {
+    	productId: 12123,
+    	cId: 12323
+    },
+    success: function (res) {
+		if (res.success) {
+			//todo
+		}
+    }
+});
+ajax回调返回数据格式：
+{success:true}
+
+6、“综合预览”分别调用：
+delProductAttributeTag
+delProductPromotionTag
+delCompetitors

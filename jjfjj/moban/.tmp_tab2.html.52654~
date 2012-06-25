@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>选词王-模板-step2</title>
+        <meta name="description" content="选词王-模板">
+        <link rel="stylesheet" type="text/css" href="../css/chosen.css">
+        <link rel="stylesheet" type="text/css" href="../css/elfinder.full.css">
+        <link rel="stylesheet" type="text/css" href="../css/visualize.css" media="all">
+        <link rel="stylesheet" type="text/css" href="../css/table_jui.css">
+        <link rel="stylesheet" type="text/css" href="../css/jquery.gritter.css">
+        <link rel="stylesheet" type="text/css" href="../css/colorbox.css">
+        <link rel="stylesheet" type="text/css" href="../css/tooltip.css">
+        <link rel="stylesheet" type="text/css" href="../css/boxy.css">
+        <link rel="stylesheet" type="text/css" href="../css/style.css" media="all">
+		<link rel="stylesheet" type="text/css" href="../css/moban.css">
+        <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.tmpl.js"></script>
+        <script type="text/javascript" src="../js/highcharts.js">
+        </script>
+        <script type="text/javascript" src="../js/jquery.tablesorter.js">
+        </script>
+        <script type="text/javascript" src="../js/jquery.form.js">
+        </script>
+        <script type="text/javascript" src="../js/base.js">
+        </script>
+        <script type="text/javascript" src="../js/dajax.js">
+        </script>
+        <script type="text/javascript" src="../js/tooltip.js">
+        </script>
+        <script type="text/javascript" src="../js/jquery.boxy.js">
+        </script>
+        <script type="text/javascript" src="../js/jquery.tools.min.js">
+        </script>
+        <script type="text/javascript" src="../js/jquery.colorbox-min.js">
+        </script>
+        <script type="text/javascript" src="../js/jquery.dataTables.min.js">
+        </script>
+		<script src="../js/mm.js"></script>
+		<script>
+			$(function() {
+				MM.moban2.init();
+			});
+		</script>
+    </head>
+    <body class="bg_b fluid stF">
+        <div id="header">
+            <div class="wrapper cf">
+            	<!--
+                <div class="logo fl">
+                    <a href="http://s7.ztcjl.com/web/home/" class="sepV_a"><img src="../images/logo4.png"></a><span class="vas mid_heading">开车精灵</span>
+                </div>
+				-->
+            </div>
+        </div>
+        <div id="main">
+            <div id="main_content" class="cf">
+                <div class="page_title row-modules">
+                    <h3 class="fl title">常用促销触发词</h3>
+                </div>
+				<div id="productShow" class="row-modules"></div>
+				<div class="row-modules nav_moban2 mt20"></div>
+                <div class="row-modules mt20">
+                    <div id="promotionWrap" class="promotion_wrap">
+                    </div>
+                </div>
+				<div class="row-modules btn_moban">
+					<a class="btn_prev" href="http://photo.163.com/html/jjfjj/moban/tab1.html">上一步</a>
+					<a class="btn_next" href="http://photo.163.com/html/jjfjj/moban/tab3.html">下一步</a>
+				</div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="wrapper">
+                <div class="cf ftr_content">
+                    <p class="tac">
+                        麦苗网络有限公司
+                    </p>
+                </div>
+            </div>
+        </div>
+		<script id="tmplProduct" type="text/x-jquery-tmpljavascript">
+            <div class="product_show cf">
+				<div class="hd"><img src="${img}"></div>
+				<div class="bd">
+					<a target="_blank" href="${url}">${title}</a>
+					<br>
+					<span>类目：</span>
+                    <br>
+                    <span class="m_color bld">&yen;${price}</span>
+				</div>
+			</div>
+        </script>
+		<script id="tmplPromoteTag" type="text/x-jquery-tmpljavascript">
+			<div class="mod1">
+        		<div class="hd">常用促销/服务词</div>
+				<div id="candidateTag" class="bd cf">
+					{{each candidate}}
+					<span class="tag" onclick="MM.moban2.updatePromotionTag('${$value}',this)">${$value}</span>
+					{{/each}}
+				</div>
+        	</div>
+			<div class="mod2">
+        		<div class="hd">我已选择的词</div>
+				<div id="selectedTag" class="bd cf">
+					{{each selected}}
+					<span class="selected tag" onclick="MM.moban2.updatePromotionTag('${$value}',this)">${$value}</span>
+					{{/each}}
+				</div>
+        	</div>
+		</script>
+    </body>
+</html>

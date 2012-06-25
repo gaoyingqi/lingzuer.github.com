@@ -1,0 +1,38 @@
+/**
+ * 将数据对象进行Json编码并通过response.outputStream写回
+ * 
+ * @param response
+ * @param object
+ * @throws IOException
+ */
+private void writeObject(HttpServletResponse response, Object object) throws IOException {
+	Object _object = object == null ? new HashMap<String, String>(0) : object;
+	Object jsonObject;
+	if (_object instanceof Collection) {
+		jsonObject = JSONArray.fromObject(_object);
+	} else {
+		jsonObject = JSONObject.fromObject(_object);
+	}
+	String jsonStr = jsonObject.toString();
+	response.setHeader("Content-Type", "application/json; charset=GBK");
+	PrintWriter writer = response.getWriter();
+	try {
+		writer.write(jsonStr);
+	} finally {
+		writer.flush();
+		writer.close();
+	}
+}
+/**
+ * 下面的接口将数据格式化成json之后直接写回
+ * 
+ * @param request
+ * @param response
+ * @throws IOException
+ */
+public void getMetadata(HttpServletRequest request, HttpServletResponse response) throws IOException,
+		ServletRequestBindingException {
+	Long aid = ServletRequestUtils.getLongParameter(request, "aid");
+	TrainMetadata metadata = readMetadata(aid);
+	writeObject(response, metadata);
+}

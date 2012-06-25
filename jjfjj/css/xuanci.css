@@ -1,0 +1,80 @@
+/*
+ * filename: style.css
+ * last modified: 28/11/2011
+*/
+
+.main_content {
+	float: left;
+	width: 634px;
+}
+.sub_content {
+	float: right;
+	width: 356px;
+}
+
+.quick_choice .hd {
+	border: 1px solid #ccc;
+	height: 38px;
+	line-height: 38px;
+	color: #333;
+	padding: 0 10px;
+	font-size: 14px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#eeefe7)); /* Safari 4-5, Chrome 1-9 */
+	background: -webkit-linear-gradient(top, #ffffff, #eeefe7); /* Safari 5.1, Chrome 10+ */
+	background: -moz-linear-gradient(top, #ffffff, #eeefe7); /* Firefox 3.6+ */
+	background: -ms-linear-gradient(top, #ffffff, #eeefe7); /* IE 10 */
+	background: -o-linear-gradient(top, #ffffff, #eeefe7); /* Opera 11.10+ */
+}
+.quick_choice .bd {
+	border: 1px solid #ccc;
+	margin-top: -1px;
+	padding: 10px;
+}
+.key_word {
+	height: 30px;
+	line-height: 30px;
+	margin-top: 10px;
+}
+.key_word .ck {
+	vertical-align: middle;
+}
+.quick_choice .sub_hd {
+	color: #666;
+	font-weight: bold;
+	padding: 5px 0;
+	border-bottom: 1px solid #ccc;
+	margin-top: 15px;
+}
+.quick_choice .n2 {
+	float: right;
+	width: 250px;
+}
+.quick_choice .ln {
+	height: 50px;
+}
+.quick_choice .bt {
+	float: left;
+	border: 1px solid #ccc;
+	margin-right: 10px;
+	display: inline;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	margin-bottom: 10px;
+	cursor: pointer;
+	width: 100px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f2f2f2), to(#d5d5d5)); /* Safari 4-5, Chrome 1-9 */
+	background: -webkit-linear-gradient(top, #f2f2f2, #d5d5d5); /* Safari 5.1, Chrome 10+ */
+	background: -moz-linear-gradient(top, #f2f2f2, #d5d5d5); /* Firefox 3.6+ */
+	background: -ms-linear-gradient(top, #f2f2f2, #d5d5d5); /* IE 10 */
+	background: -o-linear-gradient(top, #f2f2f2, #d5d5d5); /* Opera 11.10+ */
+}
+.quick_choice .bt_on {
+	border: 1px solid #99cc66;
+	color: #fff;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#729a39), to(#a0ca64)); /* Safari 4-5, Chrome 1-9 */
+	background: -webkit-linear-gradient(top, #729a39, #a0ca64); /* Safari 5.1, Chrome 10+ */
+	background: -moz-linear-gradient(top, #729a39, #a0ca64); /* Firefox 3.6+ */
+	background: -ms-linear-gradient(top, #729a39, #a0ca64); /* IE 10 */
+	background: -o-linear-gradient(top, #729a39, #a0ca64); /* Opera 11.10+ */
+}

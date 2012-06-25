@@ -1,0 +1,100 @@
+（这里修改为4个接口，获取itemlist, 获取宝贝信息，获取已选宝贝数量，获取昨日信息）
+1、首页“已选宝贝”列表数据获取方法：
+$.ajax({
+    url: '/getProductList/', //从session中获取userId
+    type: "get",
+    success: function (res) {
+		if (res.success) {
+			//todo
+		}
+    }
+});
+ajax回调返回数据格式：
+[{
+	id: 123,
+	img: 'xxx.png', //宝贝图片
+	title: "宝贝标题", //宝贝标题
+	url: 'g.cn', //宝贝链接地址
+	price: 248, //宝贝价格
+	t1: 23, //已投放
+	t2: 32, //可投放
+	ynum: 40, //昨日展现
+	yclk: 3890, //昨日点击
+	ypay: 300.40, //昨日花费
+	ytran: 340, //昨日成交
+},{
+	id: 123,
+	img: 'xxx.png', //宝贝图片
+	title: "宝贝标题", //宝贝标题
+	url: 'g.cn', //宝贝链接地址
+	price: 248, //宝贝价格
+	t1: 23, //已投放
+	t2: 32, //可投放
+	ynum: 40, //昨日展现
+	yclk: 3890, //昨日点击
+	ypay: 300.40, //昨日花费
+	ytran: 340, //昨日成交
+}]
+
+
+2、删除“已选宝贝”
+$.ajax({
+    url: '/delProductList/',
+    type: "post",
+    data: {
+        produceId: 123
+    },
+    success: function (res) {
+		if (res.success) {
+			//todo
+		}
+    }
+});
+ajax回调返回数据格式：
+{success:true}
+
+
+3、添加“已选宝贝”
+$.ajax({
+    url: '/getProductList/', //从session中获取userId
+    type: "get",
+    data: {
+        productId: 123
+    },
+    success: function (res) {
+		if (res.success) {
+			//todo
+		}
+    }
+});
+ajax回调返回数据格式：
+[{
+	id: 123,
+	img: 'xxx.png', //宝贝图片
+	title: "宝贝标题", //宝贝标题
+	url: 'g.cn', //宝贝链接地址
+	price: 248, //宝贝价格
+	t1: 23, //已投放
+	t2: 32, //可投放
+	ynum: 40, //昨日展现
+	yclk: 3890, //昨日点击
+	ypay: 300.40, //昨日花费
+	ytran: 340, //昨日成交
+}]
+
+4、获取“该宝贝正在推广xxx个词”的数量
+$.ajax({
+    url: '/getProductPromotionNumber/',
+    type: "get",
+    data: {
+        id: 123
+    },
+    success: function (res) {
+		if (res.success) {
+			//todo
+		}
+    }
+});
+ajax回调返回数据格式：
+{success:true,num:1234}
+

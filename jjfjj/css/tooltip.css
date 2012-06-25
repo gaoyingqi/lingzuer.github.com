@@ -1,0 +1,10 @@
+* {margin:0; padding:0}
+body {font:11px/1.5 微软雅黑,宋体,Helvetica, Arial, sans-serif; background:#FFF}
+.hotspot {cursor:pointer;}
+.showy{color:#900; padding-bottom:1px; border-bottom:1px dotted #900;}
+
+#text {margin:30px auto; width:500px}
+#tt {position:absolute; display:block; background:url(images/tt_left.gif) top left no-repeat; z-index:1300;}
+#tttop {display:block; height:5px; margin-left:5px; background:url(images/tt_top.gif) top right no-repeat; overflow:hidden;z-index:1300;}
+#ttcont {display:block; padding:2px 12px 3px 7px; margin-left:5px; background:#666; color:#FFF; z-index:1300;}
+#ttbot {display:block; height:5px; margin-left:5px; background:url(images/tt_bottom.gif) top right no-repeat; overflow:hidden;z-index:1300;}

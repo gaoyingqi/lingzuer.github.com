@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>选词王</title>
+        <meta name="description" content="">
+        <link rel="shortcut icon" href="/favicon.png">
+        <!-- <link rel="stylesheet" type="text/css" href="/site_media/lagu/lib/jquery-ui/css/smoothness/jquery-ui-1.8.15.custom.css"/>-->
+        <link rel="stylesheet" type="text/css" href="./开车精灵 专业的直通车智能优化系统3_files/chosen.css">
+        <link rel="stylesheet" type="text/css" href="./开车精灵 专业的直通车智能优化系统3_files/elfinder.full.css">
+        <link rel="stylesheet" type="text/css" href="./开车精灵 专业的直通车智能优化系统3_files/visualize.css" media="all">
+        <link rel="stylesheet" type="text/css" href="./开车精灵 专业的直通车智能优化系统3_files/table_jui.css">
+        <link rel="stylesheet" type="text/css" href="./开车精灵 专业的直通车智能优化系统3_files/jquery.gritter.css">
+        <link rel="stylesheet" type="text/css" href="./开车精灵 专业的直通车智能优化系统3_files/colorbox.css">
+        <link rel="stylesheet" type="text/css" href="./开车精灵 专业的直通车智能优化系统3_files/tooltip.css">
+        <!-- <link rel="stylesheet" type="text/css" href="/site_media/lagu/lib/file-uploader/fileuploader.css"/> --><!-- <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans"/> -->
+        <link rel="stylesheet" type="text/css" href="./开车精灵 专业的直通车智能优化系统3_files/boxy.css">
+        <link rel="stylesheet" type="text/css" href="./开车精灵 专业的直通车智能优化系统3_files/style.css" media="all">
+        <!--<script type="text/javascript" src="/site_media/lagu/js/head.load.min.js"></script>--><!-- <script type="text/javascript" src="/site_media/js/jquery-1.7.1.js"></script>  -->
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/jquery-1.7.2.min.js">
+        </script>
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/highcharts.js">
+        </script>
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/jquery.tablesorter.js">
+        </script>
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/jquery.form.js">
+        </script>
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/base.js">
+        </script>
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/dajax.js">
+        </script>
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/tooltip.js">
+        </script>
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/jquery.boxy.js">
+        </script>
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/jquery.tools.min.js">
+        </script>
+        <!--<script type="text/javascript" src="/site_media/lagu/lib/gritter/jquery.gritter.min.js"></script>-->
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/jquery.colorbox-min.js">
+        </script>
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/jquery.dataTables.min.js">
+        </script>
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/FixedHeader.js">
+        </script>
+        <!--<script type="text/javascript" src="/site_media/lagu/lib/datatables/dataTables.plugins.js"></script>  --><!--<script type="text/javascript" src="/site_media/lagu/js/jquery.microaccordion.js"></script>  --><!--<script type="text/javascript" src="/site_media/lagu/js/jquery.stickyPanel.js"></script>  --><!--<script type="text/javascript" src="/site_media/lagu/js/xbreadcrumbs.js"></script>  -->
+        <script type="text/javascript" src="./开车精灵 专业的直通车智能优化系统3_files/lagu.js">
+        </script>
+    </head>
+    <body class="bg_b fluid stF">
+        <div id="slide_wrapper">
+            <div id="slide_panel" class="wrapper">
+                <div id="slide_content" class="m_color">
+                    <span id="slide_close"><img src="../images/blank.gif" class="round_x16_b"></span>
+                    <div id="slide_left" class="dp75 nor_high taj">
+                        <h5>宝贝详情介绍：</h5>
+                        <div>
+                            1、宝贝详情页面是您优化整个推广宝贝的关键词、类目的操作室
+                        </div>
+                        <div>
+                            2、如果您觉得系统的推荐策略、调价幅度符合您的店铺实际情况，您可以直接"一键提交"
+                        </div>
+                        <div>
+                            3、您也可以自己选择优化策略和调价幅度，还可以根据系统的操作建议、建议出价，对每个词单独调整
+                        </div>
+                        <div>
+                            4、即使系统的推荐策略是"降价省油策略"，但是经过智能分析，仍然可能对某些非常好的词建议加价
+                        </div>
+                        <div>
+                            5、系统自动选择的监控宝贝可能并不适合您，强烈建议您自己选择监控宝贝，并对每一个监控宝贝合理设置主次推、成本和预算，并且随着宝贝的推广情况变化，要及时修改宝贝的每日预算
+                        </div>
+                    </div>
+                    <div id="slide_right" class="dp25 sepH_du">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="top_bar" class="topbar">
+            <div class="wrapper cf">
+                <ul class="fl">
+                    <li class="sep">
+                        您好，热风旗舰店 57300507
+                    </li>
+                    <li class="sep">
+                        <a href="http://s7.ztcjl.com/router/logout/">退出</a>
+                    </li>
+                    <li class="sep">
+                        <a href="aliim:sendmsg?uid=cntaobao&touid=cntaobao%E6%B4%BE%E7%94%9F%E7%A7%91%E6%8A%80&siteid=cntaobao">旺旺联系</a>
+                    </li>
+                </ul>
+                <ul class="new_items fr">
+                    <!--<li class="sep"><span class="count_el">2</span><a href="#">通知</a></li>
+                    <li class="sep"><span class="count_el">10</span><a href="#">待提交</a></li>-->
+                    <li id="slide_open">
+                        提示<img src="./开车精灵 专业的直通车智能优化系统3_files/arrow_down.png" style="width:10px">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="header">
+            <div class="wrapper cf">
+                <div class="logo fl">
+                    <a href="http://s7.ztcjl.com/web/home/" class="sepV_a"><img src="./开车精灵 专业的直通车智能优化系统3_files/logo4.png"></a><span class="vas mid_heading">开车精灵</span>
+                </div>
+                <ul class="fr cf" id="main_nav">
+                    <li id="home" class="nav_item">
+                        <a href="http://s7.ztcjl.com/web/home/" class="main_link"><img class="img_holder" style="background-image: url(/site_media/lagu/images/icons/home.png)" src="./开车精灵 专业的直通车智能优化系统3_files/blank.gif"><span>首页</span></a>
+                        <img class="tick tick_a" src="./开车精灵 专业的直通车智能优化系统3_files/blank.gif">
+                    </li>
+                    <li id="monitor_list" class="nav_item active">
+                        <a href="http://s7.ztcjl.com/web/monitor_list/" class="main_link"><img class="img_holder" style="background-image: url(/site_media/lagu/images/icons/create_write.png)" src="./开车精灵 专业的直通车智能优化系统3_files/blank.gif"><span>宝贝优化</span></a>
+                        <img class="tick tick_a" src="./开车精灵 专业的直通车智能优化系统3_files/blank.gif">
+                    </li>
+                    <li id="quick_add_keywords_mng" class="nav_item">
+                        <a href="http://s7.ztcjl.com/web/quick_add_keywords_mng/" class="main_link"><img class="img_holder" style="background-image: url(/site_media/lagu/images/icons/settings3.png)" src="./开车精灵 专业的直通车智能优化系统3_files/blank.gif"><span>快速选词</span></a>
+                        <img class="tick tick_a" src="./开车精灵 专业的直通车智能优化系统3_files/blank.gif">
+                    </li>
+                    <li id="duplicate_check" class="nav_item">
+                        <a href="javascript:to_duplicate_check();" class="main_link"><img class="img_holder" style="background-image: url(/site_media/lagu/images/icons/list_wImages.png)" src="./开车精灵 专业的直通车智能优化系统3_files/blank.gif"><span>重复词排查</span></a>
+                        <img class="tick tick_a" src="./开车精灵 专业的直通车智能优化系统3_files/blank.gif">
+                    </li>
+                    <li class="nav_item">
+                        <a href="javascript:void(0);" onclick="get_increase_download_info(57300507);" class="main_link"><img class="img_holder" style="background-image: url(/site_media/lagu/images/icons/refresh.png)" src="./开车精灵 专业的直通车智能优化系统3_files/blank.gif"><span>数据同步</span></a>
+                    </li>
+                    <li id="feedback" class="nav_item">
+                        <a href="http://s7.ztcjl.com/web/feedback/" class="main_link"><img class="img_holder" style="background-image: url(/site_media/lagu/images/icons/archive.png)" alt="" src="./开车精灵 专业的直通车智能优化系统3_files/blank.gif"><span>意见反馈</span></a>
+                        <img class="tick tick_a" src="./开车精灵 专业的直通车智能优化系统3_files/blank.gif">
+                    </li>
+                    <li class="nav_item">
+                        <a target="_blank" href="http://s7.ztcjl.com/site_media/help/help.htm" class="main_link"><img class="img_holder" style="background-image: url(/site_media/lagu/images/icons/book.png)" alt="" src="./开车精灵 专业的直通车智能优化系统3_files/blank.gif"><span>帮助</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

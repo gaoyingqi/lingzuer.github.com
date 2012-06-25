@@ -1,0 +1,158 @@
+/**
+ * 选词模块
+ * @author      yaowu.huang@gmail.com
+ * @version     1.0.0 build 2012-06-10
+ */
+
+/* ********************************输入框样式******************************** */
+input, textarea, keygen, select, button, isindex {
+	margin: 0em;
+	font: -webkit-small-control;
+	color: initial;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: -webkit-auto;
+}
+input, input[type="password"], input[type="search"], isindex {
+	-webkit-appearance: textfield;
+	padding: 1px;
+	background-color: white;
+	border: 2px inset;
+	border-image: initial;
+	-webkit-rtl-ordering: logical;
+	-webkit-user-select: text;
+	cursor: auto;
+}
+input:not([type]), input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"] {
+	padding: 1px 4px;
+}
+
+.jh {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 160px;
+	height: 29px;
+	padding-left: 8px;
+	position: relative;
+	left: 0;
+	top: 0;
+	border: 1px solid #D9D9D9;
+	border-top: 1px solid silver;
+	vertical-align: top;
+	-webkit-border-radius: 1px;
+	z-index: 0;
+}
+
+.product_show {border: 1px solid #ccc;padding:20px;}
+.product_show .hd {float: left;}
+.product_show .bd {float: left; margin-left:12px;display: inline;line-height: 22px;}
+.product_show .hd img {width: 100px; height: 100px;}
+.product_show .hd {float: left;}
+.mt20 {margin-top:20px;}
+
+.promote_tags .on,
+.attr_body .promote_tags .tag {display: none;}
+.promote_tags .on.selected,
+.attr_body .promote_tags .tag.selected {display: block;}
+
+table.display .attr_body td {
+	padding: 12px;
+}
+.attr_body .att_val {
+	color: #666;
+}
+.promotion_wrap .bd .tag,
+.attr_body .tag {
+	float: left;
+	border: 1px solid #ffcc99;
+	display: inline-block;
+	background: #ffffcc url(../images/icon_close.png) no-repeat  right 50%;
+	color: #666;
+	padding: 3px 18px 3px 6px;
+	margin: 0 15px 10px 0;
+	display: inline;
+	cursor: pointer;
+}
+.promotion_wrap .mod1 .bd .tag {
+	background: #ffffcc url(../images/icon_plus.png) no-repeat  right 50%;
+}
+.attr_body .type_2 {
+	border: 1px solid #99cc66;
+	background-color: #effdd9;
+}
+.attr_body .attr_add {
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+.competitor_wrap,
+.promotion_wrap {
+	border: 1px solid #ccc;
+	padding: 20px;
+}
+.promotion_wrap .hd {
+	border-bottom: 1px solid #ccc;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+}
+.promotion_wrap .bd {
+	padding: 20px 0;
+}
+.promotion_wrap .mod2 .bd .tag {
+	background-color: #EFFDD9;
+    border: 1px solid #99CC66;
+}
+.nav_moban1 {
+	height: 40px;
+	width: 1000px;
+	background: url(../images/nav_moban1.png) no-repeat 0 0;
+}
+.nav_moban2 {
+	height: 40px;
+	width: 1000px;
+	background: url(../images/nav_moban2.png) no-repeat 0 0;
+}
+.nav_moban3 {
+	height: 40px;
+	width: 1000px;
+	background: url(../images/nav_moban3.png) no-repeat 0 0;
+}
+.nav_moban4 {
+	height: 40px;
+	width: 1000px;
+	background: url(../images/nav_moban4.png) no-repeat 0 0;
+}
+.btn_moban {
+	text-align: right;
+}
+.competitor_wrap .mod {
+	float: left;
+	width: 50%;
+	height: 170px;
+}
+.competitor_wrap .mod .bd {
+	width: 360px;
+	border: 1px solid #ccc;
+	margin-top: 10px;
+	padding: 10px;
+	line-height: 20px;
+}
+.competitor_tag .name {
+	display: inline-block;
+	width: 300px;
+}
+.competitor_tag {
+	line-height: 26px;
+}
+.competitor_tag .item:hover {
+	background: #f3fde2;
+}
+.js_val {display: none;}
+

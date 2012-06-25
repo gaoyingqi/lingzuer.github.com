@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>热卖通选词王</title>
+        <meta name="description" content="热卖通选词王">
+		<link rel="stylesheet" href="../css/ui-lightness/jquery-ui-1.8.20.custom.css">
+        <link rel="stylesheet" type="text/css" href="../css/table_jui.css">
+        <link rel="stylesheet" type="text/css" href="../css/style.css" media="all">
+		<link rel="stylesheet" type="text/css" href="../css/moban.css" media="all">
+		<link rel="stylesheet" type="text/css" href="../css/xuanci.css" media="all">
+		<link rel="stylesheet" type="text/css" href="http://www.jacklmoore.com/colorbox/example1/colorbox.css">
+        <script src="../js/jquery-1.7.2.min.js"></script>
+		<script src="../js/jquery.tmpl.js"></script>
+		<script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
+		<script src="../js/jquery.ui.core.js"></script>
+		<script src="../js/jquery.ui.widget.js"></script>
+		<script src="../js/jquery.ui.mouse.js"></script>
+		<script src="../js/jquery.ui.slider.js"></script>
+		<script src="../js/mm.js"></script>
+		<script>
+			$(function() {
+				MM.choose.init();
+			});
+		</script>
+    </head>
+    <body class="bg_b fluid stF">
+        <div id="header">
+            <div class="wrapper cf">
+            	<!--
+                <div class="logo fl">
+                    <a href="http://s7.ztcjl.com/web/home/" class="sepV_a"><img src="../images/logo4.png"></a><span class="vas mid_heading">开车精灵</span>
+                </div>
+				-->
+            </div>
+        </div>
+        <div id="main" class="row-modules cf">
+            <div id="main_content" class="main_content cf">
+                <div class="page_title">
+                    <h3 class="fl title"><a href="javascript:void(0);">快速选词</a>&nbsp;&nbsp;<a href="http://photo.163.com/html/jjfjj/xuanci/car.html">选词车</a></h3>
+                </div>
+				<div id="productShow"></div>
+                <div class="table_wrap">
+                    <table id="chooseCandidateTable" cellpadding="0" cellspacing="0" border="0" class="display">
+                        <thead>
+                            <tr>
+                                <th nowrap="nowrap" class="sorting_disabled" width="123px" rowspan="1" colspan="1">
+                                    <div class="th_wrapp"><input id="selectAll" type="checkbox" onclick="MM.choose.toggleChecked(this.checked)" /></div>
+                                </th>
+                                <th nowrap="nowrap" rowspan="1" colspan="1" style="width: 250px; ">
+                                    <div class="th_wrapp">关键词</div>
+                                </th>
+                                <th nowrap="nowrap" rowspan="1" colspan="1" style="width: 128px; ">
+                                    <div class="th_wrapp">展现量</div>
+                                </th>
+                                <th nowrap="nowrap" rowspan="1" colspan="1" style="width: 90px; ">
+                                    <div class="th_wrapp">点击数</div>
+                                </th>
+                                <th nowrap="nowrap" rowspan="1" colspan="1" style="width: 90px; ">
+                                    <div class="th_wrapp">竞争度</div>
+                                </th>
+								<th nowrap="nowrap" rowspan="1" colspan="1" style="width: 90px; ">
+                                    <div class="th_wrapp">全网市场均价</div>
+                                </th>
+								<th nowrap="nowrap" rowspan="1" colspan="1" style="width: 104px; ">
+                                    <div class="th_wrapp">选词王推荐度</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="chooseCandidateBody"></tbody>
+                    </table>
+                </div>
+				<div class="cf"><a id="subChoose" class="btn_onok fr" href="javascript:void(0);">确认提交</a></div>
+            </div>
+			<div class="sub_content quick_choice">
+				<div class="hd">快速选词器</div>
+				<div class="bd">
+					<div class="key_word">
+						<input type="checkbox" class="ck" />
+						包含关键词：
+						<input id="must_contain" class="jh" placeholder="关键词" />
+					</div>
+					<div class="key_word">
+						<input type="checkbox" class="ck" />
+						不包含关键词：
+						<input id="exclude" class="jh" placeholder="关键词" />
+					</div>
+					<div class="sub_hd">筛选备选词</div>
+					<div class="ln cf mt20">
+						<div class="n1 fl">展现量：<span id="pv-amount"></span></div>
+						<div id="pv-range" class="n2 fl"></div>
+					</div>
+					<div class="ln cf">
+						<div class="n1 fl">点击数：<span id="click-amount"></span></div>
+						<div id="click-range" class="n2 fl"></div>
+					</div>
+					<div class="ln cf">
+						<div class="n1 fl">竞争度：<span id="competition-amount"></span></div>
+						<div id="competition-range" class="n2 fl"></div>
+					</div>
+					<div class="ln cf">
+						<div class="n1 fl">全网市场均价：<span id="cost-amount"></span></div>
+						<div id="cost-range" class="n2 fl"></div>
+					</div>
+					<div class="ln cf">
+						<div class="n1 fl">选词王推荐度：<span id="turnover-amount"></span></div>
+						<div id="turnover-range" class="n2 fl"></div>
+					</div>
+					<div class="sub_hd mt20">多维模糊排序</div>
+					<div id="fuzzyBtn" class="mt20 cf">
+						<span class="bt bt_on" st="1">高展现低竞争</span>
+						<span class="bt" st="2">高展现高点击</span>
+						<span class="bt" st="3">高点击低竞争</span>
+						<span class="bt" st="4">高展现低竞争</span>
+						<span class="bt" st="5">高展现低竞争</span>
+					</div>
+					<div class="sub_hd mt20"></div>
+					<div class="cf"><a id="subSearchFilter" class="btn_onok fr" href="javascript:void(0);">快速选词</a></div>
+				</div>
+			</div>
+        </div>
+        <div id="footer">
+            <div class="wrapper">
+                <div class="cf ftr_content">
+                    <p class="tac">
+                        麦苗网络有限公司
+                    </p>
+                </div>
+            </div>
+        </div>
+		<script id="tmplProduct" type="text/x-jquery-tmpljavascript">
+            <div class="product_show">
+				选词宝贝：<a target="_blank" href="${url}">${title}</a>
+			</div>
+        </script>
+		<script id="tmplChoosePost" type="text/x-jquery-tmpljavascript">
+            <tr id="id_item_${num_iid}">
+                <td class="tac">
+                    <input type="checkbox" value="${num_iid}" />
+                </td>
+				<td nowrap="nowrap" class="desc">
+					<div class="sepH_a">
+                        <span class="summary_inline">${keywords_online}</span>
+                    </div>
+                </td>
+				<td nowrap="nowrap" class="tac">
+					<div class="sepH_a">
+                        <span class="summary_inline">${pv}</span>
+                    </div>
+                </td>
+                <td nowrap="nowrap" class="tac">
+                    <div class="sepH_a">
+                        <span class="summary_inline">${click}</span>
+                    </div>
+                </td>
+				<td nowrap="nowrap" class="tac">
+                    <div class="sepH_a">
+                        <span class="summary_inline">${competition}</span>
+                    </div>
+                </td>
+				<td nowrap="nowrap" class="tac">
+                    <div class="sepH_a">
+                        <span class="summary_inline">${cost}</span>
+                    </div>
+                </td>
+				<td nowrap="nowrap" class="tac">
+                    <div class="sepH_a">
+                        <span class="summary_inline">${turnover}</span>
+                    </div>
+                </td>
+            </tr>
+        </script>
+    </body>
+</html>
