@@ -170,7 +170,7 @@ typeof console == "undefined" && (console = {
 	 * @param {Object} _items
 	 */
 	pub.setData = function(_items) {
-		$('#productBody').append($('#tmplProductPost').tmpl(_items));
+		$('#productBody').html($('#tmplProductPost').tmpl(_items));
 	}
 	/**
 	 * 初始化函数
@@ -192,6 +192,8 @@ typeof console == "undefined" && (console = {
 				if (res.success) {
 					mm.ITEMS = res.data;
 					pub.getProduct(res.data);
+					pub.getPutInNum(res.data);
+					pub.getYesterday(res.data);
 				}
             }
         });
@@ -214,7 +216,8 @@ typeof console == "undefined" && (console = {
 					$.each(res.data, function(i, item){      
 						_itmarr[i] = $.extend(_itmarr[i]||{}, item);
 					});
-					pub.getPutInNum(data);
+					pub.setData(_itmarr);
+					//pub.getPutInNum(data);
 				}
             }
         });
@@ -237,7 +240,8 @@ typeof console == "undefined" && (console = {
 					$.each(res.data, function(i, item){      
 						_itmarr[i] = $.extend(_itmarr[i]||{}, item);
 					});
-					pub.getYesterday(data);
+					pub.setData(_itmarr);
+					//pub.getYesterday(data);
 				}
             }
         });
@@ -306,6 +310,7 @@ typeof console == "undefined" && (console = {
 					var res = eval("("+res+")");
 					if (res.success) {
 						pub.LOADED = true;
+						pub.DATA = res.data;
 						//$('#addProduct').unbind("click", addItem);
 						$('#addProductBody').append($('#tmplProduct').tmpl(res.data));
 						pub.dataTables();
@@ -321,25 +326,101 @@ typeof console == "undefined" && (console = {
 		$('#addProduct').bind("click", addItem);
 	};
 	/**
+	 * 确认添加宝贝
+	 * @return {Void}
+	 */
+	pub.onProductOK = function(data) {
+		$('#addProductOK').click(function() {
+			var val = $('#addProductBody').find('input:checked').val();
+			if (!!val) {
+				var num = 5;
+				var _tmparr = [];
+				if (num > 4) {
+					//弹出提示框“宝贝已满”
+					$.colorbox({inline:true, href:'#fullProductBox'});
+					return;
+				} else if (num == 4) {
+					//显示提示，并隐藏“继续添加宝贝”按钮
+					$('#fullTip').show();
+					$('#goAddProduct').hide();
+				} else {
+					//隐藏提示，显示“继续添加宝贝”按钮
+					$('#fullTip').hide();
+					$('#goAddProduct').show();
+					pub.goAddProduct();
+				}
+				
+				
+				
+				//显示选择的宝贝
+				$.each(pub.DATA, function(i, item){
+					if (item.num_iid == val) {
+						_tmparr[0] = $.extend(_tmparr[0] || {}, item);
+						$('#addProductBD').html($('#tmplAddProduct').tmpl(item));
+					}
+				});
+				
+				//获取选中宝贝的推广词数量
+				$.ajax({
+		            url: mm.BASE_URL+'/html/jjfjj/json/getPutInNum.html',
+		            type: "post",
+					data: {
+		                "num_iid": val
+		            },
+		            success: function (res) {
+						var res = eval("("+res+")");
+						if (res.success) {
+							$.each(res.data, function(i, item){      
+								_tmparr[0] = $.extend(_tmparr[0]||{}, item);
+							});
+							$('#putInNum').html($('#tmplPutInNum').tmpl(res.data));
+							
+							//获取选中宝贝的昨日信息
+							$.ajax({
+					            url: mm.BASE_URL+'/html/jjfjj/json/getYesterday.html',
+					            type: "post",
+								data: {
+					                "num_iid": val
+					            },
+					            success: function (res) {
+									var res = eval("("+res+")");
+									if (res.success) {
+										$.each(res.data, function(i, item){      
+											_tmparr[0] = $.extend(_tmparr[0]||{}, item);
+										});
+										$('#productBody').append($('#tmplProductPost').tmpl(_tmparr[0]));
+									}
+					            }
+					        });
+						}
+		            }
+		        });
+				
+				
+				//弹出选择宝贝的弹出框
+				$.colorbox({inline:true, href:'#addProductBox'});
+			} else {
+				alert('请选择一个宝贝');
+			}
+		});
+	};
+	/**
+	 * 继续添加宝贝
+	 */
+	pub.goAddProduct = function() {
+		$('#goAddProduct').click(function() {
+			//弹出选择宝贝的弹出框
+			$.colorbox({inline:true, href:'#addProductBox'});
+			return;
+		});
+	}
+	/**
 	 * 取消添加宝贝
 	 * @return {Void}
 	 */
 	pub.onProductCC = function() {
 		$('#addProductCC').click(function() {
 			$.colorbox.close();
-		});
-	};
-	/**
-	 * 确认添加宝贝
-	 * @return {Void}
-	 */
-	pub.onProductOK = function() {
-		$('#addProductOK').click(function() {
-			var val = $('#addProductBody').find('input:checked').val();
-			if (!!val) {
-				pub.getProduct([val]);
-				$.colorbox.close()
-			}
 		});
 	};
 	/**

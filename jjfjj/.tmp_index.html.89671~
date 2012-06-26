@@ -6,7 +6,6 @@
         <meta name="description" content="热卖通选词王">
         <link rel="stylesheet" type="text/css" href="css/table_jui.css">
         <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
-		<link rel="stylesheet" type="text/css" href="css/moban.css">
 		<link rel="stylesheet" type="text/css" href="http://www.jacklmoore.com/colorbox/example1/colorbox.css">
         <script src="js/jquery-1.7.2.min.js"></script>
 		<script src="js/jquery.tmpl.js"></script>
@@ -70,56 +69,31 @@
 						<a id="addProduct" class="add_procuct" href="javascript:void(0);">添加宝贝进行快速选词</a>
 					</div>
 					<div style="display:none;">
-						<div id="productBox" class="product_box">
-							<div class="hd">添加宝贝进行选词</div>
-				            <div class="bd">
-				                <table id="addProductTable" cellpadding="0" cellspacing="0" border="0" class="display">
-				                    <thead>
-				                        <tr>
-				                            <th nowrap="nowrap" width="123px" class="sorting_disabled" rowspan="1" colspan="1">
-				                                <div class="th_wrapp">宝贝图片</div>
-				                            </th>
-				                            <th nowrap="nowrap" class="sorting" rowspan="1" colspan="1" style="width: 250px; ">
-				                                <div class="th_wrapp">宝贝标题</div>
-				                            </th>
-				                            <th nowrap="nowrap" class="sorting_disabled" rowspan="1" colspan="1" style="width: 112px; ">
-				                                <div class="th_wrapp">操作</div>
-				                            </th>
-				                        </tr>
-				                    </thead>
-				                    <tbody id="addProductBody"></tbody>
-				                </table>
-				            </div>
-							<div class="ft">
-								<a id="addProductCC" class="btn_oncc" href="javascript:void(0);">取消</a>
-								<a id="addProductOK" class="btn_onok" href="javascript:void(0);">确定</a>
-							</div>
+					<div id="productBox" class="product_box">
+						<div class="hd">添加宝贝进行选词</div>
+			            <div class="bd">
+			                <table id="addProductTable" cellpadding="0" cellspacing="0" border="0" class="display">
+			                    <thead>
+			                        <tr>
+			                            <th nowrap="nowrap" width="123px" class="sorting_disabled" rowspan="1" colspan="1">
+			                                <div class="th_wrapp">宝贝图片</div>
+			                            </th>
+			                            <th nowrap="nowrap" class="sorting" rowspan="1" colspan="1" style="width: 250px; ">
+			                                <div class="th_wrapp">宝贝标题</div>
+			                            </th>
+			                            <th nowrap="nowrap" class="sorting_disabled" rowspan="1" colspan="1" style="width: 112px; ">
+			                                <div class="th_wrapp">操作</div>
+			                            </th>
+			                        </tr>
+			                    </thead>
+			                    <tbody id="addProductBody"></tbody>
+			                </table>
+			            </div>
+						<div class="ft">
+							<a id="addProductCC" class="btn_oncc" href="javascript:void(0);">取消</a>
+							<a id="addProductOK" class="btn_onok" href="javascript:void(0);">确定</a>
 						</div>
-						<div id="addProductBox" class="product_box">
-							<div class="hd">添加成功</div>
-							<div class="sub_hd">你已成功添加下列宝贝</div>
-				            <div id="addProductBD" class="bd"></div>
-							<div id="putInNum" class="put_in_num"></div>
-							<div id="fullTip" class="full_tip hide">
-								<div>亲，已选宝贝满了哦～</div>
-								<div>免费版本最多支持4个宝贝的选词，若要添加更多宝贝，请升级至更高版本。<a href="javascript:void(0);">立即升级&gt;&gt;</a></div>
-							</div>
-							<div>
-								<a id="goAddProduct" class="btn_oncc" href="javascript:void(0);">继续添加宝贝</a>
-								<a id="goChooseWord" class="btn_onok" href="javascript:void(0);">进行快速选词</a>
-								<a id="goTemplate" class="btn_onok" href="javascript:void(0);">填写选词模板</a>
-							</div>
-						</div>
-						<div id="fullProductBox">
-							<div class="full_tip">
-								<div>亲，已选宝贝满了哦～</div>
-								<div>免费版本最多支持4个宝贝的选词，若要添加更多宝贝，请升级至更高版本。<a href="">立即升级&gt;&gt;</a></div>
-							</div>
-							<div>
-								<a id="closeUpgrade" class="btn_oncc" href="javascript:void(0);">稍后升级</a>
-								<a id="goUpgrade" class="btn_onok" href="javascript:void(0);">立即升级</a>
-							</div>
-						</div>
+					</div>
 					</div>
                 </div>
             </div>
@@ -198,21 +172,6 @@
                     <input name="add_product" type="radio" value="${num_iid}" />
                 </td>
             </tr>
-        </script>
-		<script id="tmplAddProduct" type="text/x-jquery-tmpljavascript">
-            <div class="product_show cf">
-				<div class="hd"><img src="${img}"></div>
-				<div class="bd">
-					<a target="_blank" href="${url}">${title}</a>
-					<br>
-					<span>类目：</span>
-                    <br>
-                    <span class="m_color bld">&yen;${price}</span>
-				</div>
-			</div>
-        </script>
-		<script id="tmplPutInNum" type="text/x-jquery-tmpljavascript">
-         	该宝贝正在推广${t1}个词，你还可以添加${t2}个词 <span>?</span>
         </script>
     </body>
 </html>
