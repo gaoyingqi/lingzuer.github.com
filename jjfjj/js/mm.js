@@ -632,6 +632,7 @@ typeof console == "undefined" && (console = {
 	 */
 	pub.setCompetitorData = function(_data) {
 		$('#competitorWrap').append($('#tmplCompetitor').tmpl(_data));
+		pub.checkOne();
 	};
 	/**
 	 * 添加宝贝竞争对手
@@ -736,6 +737,18 @@ typeof console == "undefined" && (console = {
             }
         });
 	};
+	/**
+	 * 选择一个
+	 */
+	pub.checkOne = function() {
+		var checkboxes = $('#competitorWrap :checkbox');
+		checkboxes.click(function(){
+			var self = this;
+			checkboxes.each(function(){
+				if(this!=self) this.checked = ''
+			})
+		})
+	}
 	mm.moban3 = pub;
 })(MM);
 
