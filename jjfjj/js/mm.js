@@ -934,7 +934,7 @@ typeof console == "undefined" && (console = {
             url: mm.BASE_URL+'/html/jjfjj/json/getChooseSummary.html',
             type: "post",
 			data: {
-                productIds: data
+                "num_iids": data
             },
             success: function (res) {
 				var res = eval("("+res+")");
@@ -1008,41 +1008,41 @@ typeof console == "undefined" && (console = {
 		$( "#click-amount" ).html( "$" + $( "#click-range" ).slider( "values", 0 ) +
 			" - $" + $( "#click-range" ).slider( "values", 1 ) );
 		
-		$( "#competition-range" ).slider({
+		$( "#competitor-range" ).slider({
 			range: true,
 			min: 0,
 			max: 400,
 			values: [ 75, 300 ],
 			slide: function( event, ui ) {
-				$( "#competition-amount" ).html( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+				$( "#competitor-amount" ).html( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
 			}
 		});
-		$( "#competition-amount" ).html( "$" + $( "#competition-range" ).slider( "values", 0 ) +
-			" - $" + $( "#competition-range" ).slider( "values", 1 ) );
+		$( "#competitor-amount" ).html( "$" + $( "#competitor-range" ).slider( "values", 0 ) +
+			" - $" + $( "#competitor-range" ).slider( "values", 1 ) );
 		
-		$( "#cost-range" ).slider({
+		$( "#avg-range" ).slider({
 			range: true,
 			min: 0,
 			max: 400,
 			values: [ 75, 300 ],
 			slide: function( event, ui ) {
-				$( "#cost-amount" ).html( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+				$( "#avg-amount" ).html( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
 			}
 		});
-		$( "#cost-amount" ).html( "$" + $( "#cost-range" ).slider( "values", 0 ) +
-			" - $" + $( "#cost-range" ).slider( "values", 1 ) );
+		$( "#avg-amount" ).html( "$" + $( "#avg-range" ).slider( "values", 0 ) +
+			" - $" + $( "#avg-range" ).slider( "values", 1 ) );
 		
-		$( "#turnover-range" ).slider({
+		$( "#recommend-range" ).slider({
 			range: true,
 			min: 0,
 			max: 400,
 			values: [ 75, 300 ],
 			slide: function( event, ui ) {
-				$( "#turnover-amount" ).html( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+				$( "#recommend-amount" ).html( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
 			}
 		});
-		$( "#turnover-amount" ).html( "$" + $( "#turnover-range" ).slider( "values", 0 ) +
-			" - $" + $( "#turnover-range" ).slider( "values", 1 ) );
+		$( "#recommend-amount" ).html( "$" + $( "#recommend-range" ).slider( "values", 0 ) +
+			" - $" + $( "#recommend-range" ).slider( "values", 1 ) );
 	};
 	/**
 	 * 全选
@@ -1056,61 +1056,65 @@ typeof console == "undefined" && (console = {
 	 * 多维模糊排序
 	 */
 	pub.fuzzySet = function() {
-		$('#fuzzyBtn .bt').click(function() {
-			$(this).toggleClass("bt_on");
+		var btn = $('#fuzzyBtn .bt');
+		btn.click(function(){
+			var self = this;
+			$(self).toggleClass("bt_on");
+			btn.each(function(){
+				if (this != self) {
+					$(this).removeClass("bt_on");
+				}
+			});
 		});
 	};
 	/**
-	 * 快速选词
+	 * 提交搜索进行快速选词
 	 */
 	pub.subSearchFilter = function() {
 		$('#subSearchFilter').click(function() {
-			var must_contain = $('#must_contain').val();
-			var exclude = $('#exclude').val();
-			var fuzzy_sort_type = [];
-			var page = 1;
-			$.each($('#fuzzyBtn .bt_on'), function(i, item){      
-				fuzzy_sort_type[i] = $(item).attr('st');
-			});
+			var i_val = $.trim($('#include_list').val());
+			var e_val = $.trim($('#exclude_list').val());
+			var include_list = !!i_val ? i_val.split(' ') : [];
+			var exclude_list = !!e_val ? e_val.split(' ') : [];
+			
+			var page_no = 1;
+			var page_size = 10; //每页个数
+			var total_num = 1000; //根据查询条件查到的总条数
+			
+			var fuzzy = $('#fuzzyBtn .bt');
+			var onfuzzy = $('#fuzzyBtn .bt_on');
+			var f_val = onfuzzy.attr('st');
+			var fuzzy_sort_type = !!f_val ? f_val : -1;
 			
 			var data = {
 				"num_iid": "3232323",
-				"search_filter": {
-					"must_contain": must_contain,
-					"exclude": exclude,
+				"include_list": include_list,
+				"exclude_list": exclude_list,
+				"indicator_filter": {
 					"pv": {
-						"max": $( "#pv-range" ).slider( "values", 1 ),
-						"min": $( "#pv-range" ).slider( "values", 0 ),
-						"upper_limit": 0,
-						"lower_limit": 400
+						"upper_limit": $( "#pv-range" ).slider( "values", 1 ),
+						"lower_limit": $( "#pv-range" ).slider( "values", 0 )
 					},
-					"clicks": {
-						"max": $( "#click-range" ).slider( "values", 1 ),
-						"min": $( "#click-range" ).slider( "values", 0 ),
-						"upper_limit": 0,
-						"lower_limit": 400
+					"click": {
+						"upper_limit": $( "#click-range" ).slider( "values", 1 ),
+						"lower_limit": $( "#click-range" ).slider( "values", 0 )
 					},
 					"avg_price": {
-						"max": $( "#pv-range" ).slider( "values", 1 ),
-						"min": $( "#pv-range" ).slider( "values", 0 ),
-						"upper_limit": 0,
-						"lower_limit": 400
+						"upper_limit": $( "#avg-range" ).slider( "values", 1 ),
+						"lower_limit": $( "#avg-range" ).slider( "values", 0 )
 					},
-					"compete": {
-						"max": $( "#pv-range" ).slider( "values", 1 ),
-						"min": $( "#pv-range" ).slider( "values", 0 ),
-						"upper_limit": 0,
-						"lower_limit": 400
+					"competitor": {
+						"upper_limit": $( "#competitor-range" ).slider( "values", 1 ),
+						"lower_limit": $( "#competitor-range" ).slider( "values", 0 )
 					},
-					"recommendation": {
-						"max": $( "#pv-range" ).slider( "values", 1 ),
-						"min": $( "#pv-range" ).slider( "values", 0 ),
-						"upper_limit": 0,
-						"lower_limit": 400
-					},
-					"fuzzy_sort_type": fuzzy_sort_type,
-					"page": page
-				}
+					"recommend": {
+						"upper_limit": $( "#recommend-range" ).slider( "values", 1 ),
+						"lower_limit": $( "#recommend-range" ).slider( "values", 0 )
+					}
+				},
+				"fuzzy_sort_type": fuzzy_sort_type,
+				"page_no": page_no,
+				"page_size": page_size
 			};
 			$.ajax({
 	            url: mm.BASE_URL+'/html/jjfjj/json/filterChooseSummary.html',
@@ -1119,7 +1123,8 @@ typeof console == "undefined" && (console = {
 	            success: function (res) {
 					var res = eval("("+res+")");
 					if (res.success) {
-						//todo
+						//渲染列表
+						pub.setData(res.keyword_list_in_page);
 					}
 	            }
 	        });

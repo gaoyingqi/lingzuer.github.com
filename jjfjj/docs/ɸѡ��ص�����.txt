@@ -1,0 +1,14 @@
+//关键词筛选后设置
+$('#include_list').val(res.include_list.join(' '));
+$('#exclude_list').val(res.exclude_list.join(' '));
+//slider
+$( "#pv-range" ).slider( "values", [res.indicator_limit.pv.lower_limit, res.indicator_limit.pv.upper_limit] );
+$( "#click-range" ).slider( "values", [res.indicator_limit.click.lower_limit, res.indicator_limit.click.upper_limit] );
+$( "#avg-range" ).slider( "values", [res.indicator_limit.avg_price.lower_limit, res.indicator_limit.avg_price.upper_limit] );
+$( "#competitor-range" ).slider( "values", [res.indicator_limit.competitor.lower_limit, res.indicator_limit.competitor.upper_limit] );
+$( "#recommend-range" ).slider( "values", [res.indicator_limit.recommend.lower_limit, res.indicator_limit.recommend.upper_limit] );
+$( "#pv-amount" ).html( "$" + res.indicator_limit.pv.lower_limit + " - $" + res.indicator_limit.pv.upper_limit );
+$( "#click-amount" ).html( "$" + res.indicator_limit.click.lower_limit + " - $" + res.indicator_limit.click.upper_limit );
+$( "#avg-amount" ).html( "$" + res.indicator_limit.avg_price.lower_limit + " - $" + res.indicator_limit.avg_price.upper_limit );
+$( "#competitor-amount" ).html( "$" + res.indicator_limit.competitor.lower_limit + " - $" + res.indicator_limit.competitor.upper_limit );
+$( "#recommend-amount" ).html( "$" + res.indicator_limit.recommend.lower_limit + " - $" + res.indicator_limit.recommend.upper_limit );

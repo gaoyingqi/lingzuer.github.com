@@ -78,12 +78,12 @@
 					<div class="key_word">
 						<input type="checkbox" class="ck" />
 						包含关键词：
-						<input id="must_contain" class="jh" placeholder="关键词" />
+						<input id="include_list" class="jh" placeholder="关键词" />
 					</div>
 					<div class="key_word">
 						<input type="checkbox" class="ck" />
 						不包含关键词：
-						<input id="exclude" class="jh" placeholder="关键词" />
+						<input id="exclude_list" class="jh" placeholder="关键词" />
 					</div>
 					<div class="sub_hd">筛选备选词</div>
 					<div class="ln cf mt20">
@@ -95,16 +95,16 @@
 						<div id="click-range" class="n2 fl"></div>
 					</div>
 					<div class="ln cf">
-						<div class="n1 fl">竞争度：<span id="competition-amount"></span></div>
-						<div id="competition-range" class="n2 fl"></div>
+						<div class="n1 fl">竞争度：<span id="competitor-amount"></span></div>
+						<div id="competitor-range" class="n2 fl"></div>
 					</div>
 					<div class="ln cf">
-						<div class="n1 fl">全网市场均价：<span id="cost-amount"></span></div>
-						<div id="cost-range" class="n2 fl"></div>
+						<div class="n1 fl">全网市场均价：<span id="avg-amount"></span></div>
+						<div id="avg-range" class="n2 fl"></div>
 					</div>
 					<div class="ln cf">
-						<div class="n1 fl">选词王推荐度：<span id="turnover-amount"></span></div>
-						<div id="turnover-range" class="n2 fl"></div>
+						<div class="n1 fl">选词王推荐度：<span id="recommend-amount"></span></div>
+						<div id="recommend-range" class="n2 fl"></div>
 					</div>
 					<div class="sub_hd mt20">多维模糊排序</div>
 					<div id="fuzzyBtn" class="mt20 cf">
@@ -140,7 +140,7 @@
                 </td>
 				<td nowrap="nowrap" class="desc">
 					<div class="sepH_a">
-                        <span class="summary_inline">${keywords_online}</span>
+                        <span class="summary_inline">${keyword}</span>
                     </div>
                 </td>
 				<td nowrap="nowrap" class="tac">
@@ -155,17 +155,17 @@
                 </td>
 				<td nowrap="nowrap" class="tac">
                     <div class="sepH_a">
-                        <span class="summary_inline">${competition}</span>
+                        <span class="summary_inline">${competitor}</span>
                     </div>
                 </td>
 				<td nowrap="nowrap" class="tac">
                     <div class="sepH_a">
-                        <span class="summary_inline">${cost}</span>
+                        <span class="summary_inline">${avg_price}</span>
                     </div>
                 </td>
 				<td nowrap="nowrap" class="tac">
                     <div class="sepH_a">
-                        <span class="summary_inline">${turnover}</span>
+                        <span class="summary_inline">${recommend}</span>
                     </div>
                 </td>
             </tr>
