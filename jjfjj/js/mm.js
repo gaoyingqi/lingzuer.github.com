@@ -333,7 +333,7 @@ typeof console == "undefined" && (console = {
 		$('#addProductOK').click(function() {
 			var val = $('#addProductBody').find('input:checked').val();
 			if (!!val) {
-				var num = 5;
+				var num = 3;
 				var _tmparr = [];
 				if (num > 4) {
 					//弹出提示框“宝贝已满”
@@ -410,7 +410,7 @@ typeof console == "undefined" && (console = {
 	pub.goAddProduct = function() {
 		$('#goAddProduct').click(function() {
 			//弹出选择宝贝的弹出框
-			$.colorbox({inline:true, href:'#addProductBox'});
+			$.colorbox({inline:true, href:'#productBox'});
 			return;
 		});
 	}
