@@ -6,12 +6,15 @@
         <meta name="description" content="热卖通选词王">
         <link rel="stylesheet" type="text/css" href="css/table_jui.css">
         <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+		<link rel="stylesheet" type="text/css" href="css/showLoading.css" media="all">
 		<link rel="stylesheet" type="text/css" href="css/moban.css">
 		<link rel="stylesheet" type="text/css" href="http://www.jacklmoore.com/colorbox/example1/colorbox.css">
         <script src="js/jquery-1.7.2.min.js"></script>
 		<script src="js/jquery.tmpl.js"></script>
-		<script type="text/javascript" src="js/jquery.colorbox-min.js"></script>
-		<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+		<script src="js/jquery.colorbox-min.js"></script>
+		<script src="js/jquery.dataTables.min.js"></script>
+		<!-- http://contextllc.com/tools/jQuery-showLoading -->
+		<script src="js/jquery.showLoading.js"></script>
 		<script src="js/mm.js"></script>
 		<script>
 			$(function() {
@@ -22,11 +25,13 @@
     <body class="bg_b fluid stF">
         <div id="header">
             <div class="wrapper cf">
-            	<!--
                 <div class="logo fl">
-                    <a href="http://s7.ztcjl.com/web/home/" class="sepV_a"><img src="../images/logo4.png"></a><span class="vas mid_heading">开车精灵</span>
-                </div>
-				-->
+                    <a href="http://mm.com/"><img src="images/logo.png"></a>
+                </div> 
+				<div class="fr">
+					<div class="user_name">你好，lingzuer | <a href="javascript:void(0);">退出</a></div>
+					<div id="activity_pane" class="synch_data fr">数据同步</div>
+				</div>
             </div>
         </div>
         <div id="main">
@@ -128,7 +133,7 @@
             <div class="wrapper">
                 <div class="cf ftr_content">
                     <p class="tac">
-                        麦苗网络有限公司
+						杭州麦苗网络有限公司版权所有&copy;1997-2012
                     </p>
                 </div>
             </div>

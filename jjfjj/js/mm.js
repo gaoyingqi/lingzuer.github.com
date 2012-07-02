@@ -159,6 +159,37 @@ typeof console == "undefined" && (console = {
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 /**
+ * loading页面
+ * @param {Object} mm
+ */
+(function(mm) {
+	var pub = {};
+	/**
+	 * 初始化方法
+	 */
+	pub.init = function() {
+		$('body').showLoading();
+		pub.loading();
+	};
+	/**
+	 * 加载中
+	 */
+	pub.loading = function() {
+		$.ajax({
+            url: mm.BASE_URL+'/html/jjfjj/json/loading.html',
+            type: "post",
+            success: function (res) {
+				var res = eval("("+res+")");
+				if (res.success) {
+					$('body').hideLoading();
+					location.href = mm.BASE_URL+'/html/jjfjj/index.html';
+				}
+            }
+        });
+	};
+	mm.load = pub;
+})(MM);
+/**
  * 选词王首页模块
  * @param {Object} mm
  */
@@ -178,6 +209,7 @@ typeof console == "undefined" && (console = {
 	pub.init = function() {
 		pub.getProductItems();
 		pub.addProduct();
+		pub.synchData();
 	};
 	/**
 	 * 获取宝贝ID列表
@@ -429,11 +461,49 @@ typeof console == "undefined" && (console = {
 	pub.dataTables = function() {
 		$('#addProductTable').dataTable({
             "bProcessing": true,
+			"bPaginate": true,//分页按钮
+	        "bLengthChange": true,//每行显示记录数
+	        "bFilter": true,//搜索栏
+	        "bSort": true,//排序
+	        "bInfo": true,//Showing 1 to 10 of 23 entries  总记录数每页显示多少等信息
+			"aaSorting": [[ 2, "desc" ]],//给列表排序 ，第一个参数表示那列。第二个参数为 desc或是asc
+			"sUrl": "../media/language/de_DE.txt",
 			"fnDrawCallback": function () {
                 $.colorbox({inline:true, href:'#productBox'});
             }
         });
-	}
+	};
+	/**
+	 * 数据同步
+	 */
+	pub.synchData = function() {
+		$('#activity_pane').click(function() {
+			$('body').showLoading();
+//			$.ajax({
+//	            url: mm.BASE_URL+'/html/jjfjj/json/synchData.html',
+//	            type: "post",
+//	            success: function (res) {
+//					var res = eval("("+res+")");
+//					if (res.success) {
+//						$('body').hideLoading();
+//					}
+//	            }
+//	        });
+			// test
+			setTimeout(function() {
+				$.ajax({
+		            url: mm.BASE_URL+'/html/jjfjj/json/synchData.html',
+		            type: "post",
+		            success: function (res) {
+						var res = eval("("+res+")");
+						if (res.success) {
+							$('body').hideLoading();
+						}
+		            }
+		        });
+			}, 2000);
+		}); 
+	};
 	mm.index = pub;
 })(MM);
 
@@ -955,7 +1025,7 @@ typeof console == "undefined" && (console = {
 		$('#chooseCandidateTable').dataTable({
             "bProcessing": true
         });
-	}
+	};
 	/**
 	 * 添加到选词车
 	 */
@@ -978,7 +1048,7 @@ typeof console == "undefined" && (console = {
 	            }
 	        });
 		});
-	}
+	};
 	/**
 	 * 筛选备选词
 	 */
@@ -1208,9 +1278,40 @@ typeof console == "undefined" && (console = {
 		});
 	};
 	/**
-	 * 提交关键词
+	 * 提交关键词校验
 	 */
 	pub.submitBidwords = function() {
+		var num = $('#cartBody').find('input:checked').length;
+		$.ajax({
+            url: mm.BASE_URL+'/html/jjfjj/json/submitBidwordsSatisfied.html',
+            type: "post",
+			data: {
+				'num_iid': '3232233',
+				'submit_bidwords_num': num
+			},
+            success: function (res) {
+				var res = eval("("+res+")");
+				if (res.success) {
+					switch (res.detail_code) {
+						case 0:
+							pub.submit();
+		                case 1:
+		                    alert('tip1');
+		                    break;
+		                case 2:
+		                    alert('tip1');
+		                    break;
+		                default:
+		                    alert('网络错误，请稍候再试');
+		            }
+				}
+            }
+        });
+	};
+	/**
+	 * 提交关键词
+	 */
+	pub.submit = function() {
 		var querys = [];
 		$.each($('#cartBody').find('input:checked'), function(i, item){
 			querys[i] = {};
@@ -1232,7 +1333,7 @@ typeof console == "undefined" && (console = {
 				}
             }
         });
-	}
+	};
 	mm.cart = pub;
 })(MM);
 
