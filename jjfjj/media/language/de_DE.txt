@@ -1,4 +1,4 @@
-"oLanguage": {
+{
 	"sLengthMenu": "每页显示 _MENU_条",
 	"sZeroRecords": "没有找到符合条件的数据",
 	"sProcessing": "&lt;img src=’./loading.gif’ /&gt;",

@@ -168,8 +168,12 @@ typeof console == "undefined" && (console = {
 	 * 初始化方法
 	 */
 	pub.init = function() {
-		$('body').showLoading();
-		pub.loading();
+		$('.container').showLoading();
+//		pub.loading();
+		//test
+		setTimeout(function() {
+			pub.loading();
+		},1000);
 	};
 	/**
 	 * 加载中
@@ -181,7 +185,7 @@ typeof console == "undefined" && (console = {
             success: function (res) {
 				var res = eval("("+res+")");
 				if (res.success) {
-					$('body').hideLoading();
+					$('.container').hideLoading();
 					location.href = mm.BASE_URL+'/html/jjfjj/index.html';
 				}
             }
@@ -457,17 +461,35 @@ typeof console == "undefined" && (console = {
 	};
 	/**
 	 * 对宝贝列表排序
+	 * bSearchable: http://www.datatables.net/forums/discussion/4041/problem-with-bsearchable-boolean/p1
+	 * 
 	 */
 	pub.dataTables = function() {
 		$('#addProductTable').dataTable({
+			"aLengthMenu": [
+	            [1, 2, -1],
+	            [1, 2, "All"]
+	        ],
             "bProcessing": true,
-			"bPaginate": true,//分页按钮
+			"bPaginate": true,//左上角分页按钮
+			"iDisplayLength": 1,
+			"sPaginationType": "full_numbers", //default 'two_button'
 	        "bLengthChange": true,//每行显示记录数
 	        "bFilter": true,//搜索栏
 	        "bSort": true,//排序
+	        "aoColumnDefs": [ 
+				{ "bSortable": false, "aTargets": [ 0,2 ] } //那一列不能排序
+		    ],
 	        "bInfo": true,//Showing 1 to 10 of 23 entries  总记录数每页显示多少等信息
-			"aaSorting": [[ 2, "desc" ]],//给列表排序 ，第一个参数表示那列。第二个参数为 desc或是asc
-			"sUrl": "../media/language/de_DE.txt",
+			"aaSorting": [  ],//给列表排序 ，第一个参数表示那列。第二个参数为 desc或是asc
+			"oLanguage": {
+				"sUrl": mm.BASE_URL+"/html/jjfjj/media/language/de_DE.txt"
+			},
+			"aoColumns": [ 
+	            {"bVisible": true, "bSearchable": false},
+	            {"bVisible": true,  "bSearchable": true},                          
+	            {"bVisible": true, "bSearchable": false},
+	        ],
 			"fnDrawCallback": function () {
                 $.colorbox({inline:true, href:'#productBox'});
             }
@@ -925,12 +947,52 @@ typeof console == "undefined" && (console = {
 	 */
 	pub.init = function() {
 		mm.moban1.getProduct();
+		pub.getPutInNum();
+		pub.getCart();
 		pub.getChooseCandidateItems();
 		pub.slider();
-		pub.subChoose();
+		//pub.subChoose();
 		pub.toggleChecked(status);
 		pub.fuzzySet();
 		pub.subSearchFilter();
+	};
+	/**
+	 * 获取推广词数量
+	 */
+	pub.getPutInNum = function() {
+		$.ajax({
+            url: mm.BASE_URL+'/html/jjfjj/json/getPutInNum.html',
+            type: "post",
+			data: {
+                "num_iids": 213
+            },
+            success: function (res) {
+				var res = eval("("+res+")");
+				if (res.success) {
+					$('#produstSelectMsg .n1').html(res.data[0].t1);
+				}
+            }
+        });
+	};
+	/**
+	 * 获取选词车中的数量
+	 */
+	pub.getCart = function() {
+		$.ajax({
+            url: mm.BASE_URL+'/html/jjfjj/json/getCart.html',
+            type: "post",
+			data: {
+                "num_iids": 213
+            },
+            success: function (res) {
+				var res = eval("("+res+")");
+				if (res.success) {
+					pub.CARTNUM = res.data.length;
+					$('#produstSelectMsg .n2').html(res.data.length);
+					$('#produstSelectMsg .n3').html(800 - res.data.length);
+				}
+            }
+        });
 	};
 	/**
 	 * 添加数据
@@ -938,6 +1000,7 @@ typeof console == "undefined" && (console = {
 	 */
 	pub.setData = function(_items) {
 		$('#chooseCandidateBody').append($('#tmplChoosePost').tmpl(_items));
+		pub.subChoose();
 	};
 	/**
 	 * 获取已选宝贝ID列表
@@ -1023,7 +1086,34 @@ typeof console == "undefined" && (console = {
 	 */
 	pub.dataTables = function() {
 		$('#chooseCandidateTable').dataTable({
-            "bProcessing": true
+            "aLengthMenu": [
+	            [500, 1000, -1],
+	            [500, 1000, "All"]
+	        ],
+            "bProcessing": true,
+			"bPaginate": true,//左上角分页按钮
+			"iDisplayLength": 500, //一页显示多少条
+			"sPaginationType": "full_numbers", //default 'two_button'
+	        "bLengthChange": true,//每行显示记录数
+	        "bFilter": true,//搜索栏
+	        "bSort": true,//排序
+			"aoColumnDefs": [ 
+				{ "bSortable": false, "aTargets": [ 0 ] } //那一列不能排序
+		    ],
+	        "bInfo": true,//Showing 1 to 10 of 23 entries  总记录数每页显示多少等信息
+			"aaSorting": [  ],//给列表排序 ，第一个参数表示那列。第二个参数为 desc或是asc, [ 1, "asc" ]
+			"oLanguage": {
+				"sUrl": mm.BASE_URL+"/html/jjfjj/media/language/de_DE.txt"
+			},
+			"aoColumns": [ 
+	            {"bVisible": true, "bSearchable": false},
+	            {"bVisible": true,  "bSearchable": true},                          
+	            {"bVisible": true, "bSearchable": false},
+				{"bVisible": true, "bSearchable": false},
+				{"bVisible": true, "bSearchable": false},
+				{"bVisible": true, "bSearchable": false},
+				{"bVisible": true, "bSearchable": false}
+	        ]
         });
 	};
 	/**
@@ -1048,7 +1138,44 @@ typeof console == "undefined" && (console = {
 	            }
 	        });
 		});
+		$.each($('#chooseCandidateBody').find('input:checkbox'), function(i, item){
+			$(item).click(function() {
+				pub.subToCart();
+			})
+		});
+		
 	};
+	/**
+	 * 提交到选词车
+	 */
+	pub.subToCart = function() {
+		var querys = [];
+			$.each($('#chooseCandidateBody').find('input:checked'), function(i, item){
+				var _val = $(item).val();
+				$.each(_itmarr, function(j, itm) {
+					if (_val == itm.num_iid) {
+						querys.push(itm);
+					}
+				});
+			});
+			$.ajax({
+	            url: mm.BASE_URL+'/html/jjfjj/json/addChooseSummary.html',
+	            type: "post",
+				data: {
+					'num_iid': '3232233',
+					'ops': 'del/add',
+					'querys': querys
+				},
+	            success: function (res) {
+					var res = eval("("+res+")");
+					if (res.success) {
+						$('#produstSelectMsg .n2').html(pub.CARTNUM + querys.length);
+						$('#produstSelectMsg .n3').html(800 - pub.CARTNUM + querys.length);
+						//location.href="http://photo.163.com/html/jjfjj/xuanci/car.html";
+					}
+	            }
+	        });
+	}
 	/**
 	 * 筛选备选词
 	 */
@@ -1217,13 +1344,14 @@ typeof console == "undefined" && (console = {
 		mm.moban1.getProduct();
 		pub.getCart();
 		pub.toggleChecked(status);
+		pub.initPrice();
 	};
 	/**
 	 * 添加宝贝数据
 	 * @param {Object} _items
 	 */
 	pub.setData = function(_data) {
-		$('#cartBody').append($('#tmplCartPost').tmpl(_data));
+		$('#cartBody').html($('#tmplCartPost').tmpl(_data));
 	};
 	/**
 	 * 获取某个宝贝正在选词车的词（同时获得推荐初始价格）
@@ -1235,14 +1363,13 @@ typeof console == "undefined" && (console = {
 			data: {
 				'num_iid': '3232233',
 				'need_init_price': true,
-				'init_price_strategy': 0
+				'init_price_strategy': $('#setInitPrice').val() || 0
 			},
             success: function (res) {
 				var res = eval("("+res+")");
 				if (res.success) {
 					pub.setData(res.data);
 					pub.dataTables();
-					pub.initPrice();
 				}
             }
         });
@@ -1252,7 +1379,32 @@ typeof console == "undefined" && (console = {
 	 */
 	pub.dataTables = function() {
 		$('#cartTable').dataTable({
-            "bProcessing": true
+            "aLengthMenu": [
+	            [50, 100, -1],
+	            [50, 100, "All"]
+	        ],
+			"bRetrieve": true, //
+            "bProcessing": true,
+			"bPaginate": true,//左上角分页按钮
+			"iDisplayLength": 50, //一页显示多少条
+			"sPaginationType": "full_numbers", //default 'two_button'
+	        "bLengthChange": true,//每行显示记录数
+	        "bFilter": true,//搜索栏
+	        "bSort": true,//排序
+			"aoColumnDefs": [ 
+				{ "bSortable": false, "aTargets": [ 0,2 ] } //那一列不能排序
+		    ],
+	        "bInfo": true,//Showing 1 to 10 of 23 entries  总记录数每页显示多少等信息
+			"aaSorting": [  ],//给列表排序 ，第一个参数表示那列。第二个参数为 desc或是asc, [ 1, "asc" ]
+			"oLanguage": {
+				"sUrl": mm.BASE_URL+"/html/jjfjj/media/language/de_DE.txt"
+			},
+			"aoColumns": [ 
+	            {"bVisible": true, "bSearchable": false},
+	            {"bVisible": true,  "bSearchable": true},                          
+	            {"bVisible": true, "bSearchable": false},
+				{"bVisible": true, "bSearchable": false}
+	        ]
         });
 	}
 	/**
@@ -1267,14 +1419,15 @@ typeof console == "undefined" && (console = {
 	 * 初始价格
 	 */
 	pub.initPrice = function() {
-		var oval = [];
-		$.each($('#cartBody').find('input:text'), function(i, item){      
-			oval[i] = $(item).val();
-		});
+//		var oval = [];
+//		$.each($('#cartBody').find('input:text'), function(i, item){      
+//			oval[i] = $(item).val();
+//		});
 		$('#setInitPrice').change(function() {
-			$.each($('#cartBody').find('input:text'), function(i, item){      
-				$(item).val($('#setInitPrice').val() * oval[i]);
-			});
+			pub.getCart();
+//			$.each($('#cartBody').find('input:text'), function(i, item){      
+//				$(item).val($('#setInitPrice').val() * oval[i]);
+//			});
 		});
 	};
 	/**
